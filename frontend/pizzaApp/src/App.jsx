@@ -1,4 +1,6 @@
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import RegisterPage from '../components/Register/RegisterPage';
 import HomePage from "./../components/Home/Homepage"
 import LoginPage from "./../components/Login/LoginPage"
 import AdminPage from "./../components/Admin/AdminPage"
@@ -8,23 +10,22 @@ import DetailPizza from "./../components/DetailPizza/DetailPizza"
 import PlaceOrder from "./../components/PlaceOrder/PlaceOrder"
 
 
-function App() {
-//to run check u r in this path ->pizzaApp\frontend\pizzaApp> then type=>"npm run dev"
-  return (
-    <div>
-      <Router>
-				<Routes>
-					<Route path="/" element={<LoginPage/>} ></Route>
-					<Route path="/home" element={<HomePage />}></Route>
-					<Route path="/detailpizza/:pizzaid" element={<DetailPizza />}></Route>
-					<Route path="/custompizza" element={<CustomPizza />}></Route>
-					<Route path="/placeorder" element={<PlaceOrder />}></Route>
-					<Route path="/adminlogin" element={<AdminLogin />}></Route>
-					<Route path="/admin" element={<AdminPage />}></Route>
-				</Routes>
-			</Router>
-    </div>
-  )
-}
 
-export default App
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage/>} />
+        <Route path="/register" element={<RegisterPage/>} />
+        <Route path="/home" element={<HomePage/>} />
+        <Route path="/detailpizza/:pizzaid" element={<DetailPizza />} />
+        <Route path="/custompizza" element={<CustomPizza />} />
+        <Route path="/placeorder" element={<PlaceOrder />} />
+        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;

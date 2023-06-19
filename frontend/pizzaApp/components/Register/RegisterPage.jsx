@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './loginpage.css';
+import "./register.css"
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -17,30 +17,32 @@ const LoginPage = () => {
   };
   const navigate = useNavigate();
   const handleRegisterClick = () => {
-    navigate('/register');
+    navigate('/');
   };
 
   return (
-    <div className='login_container'>
-    <div className='glass-card'>
     <div className="login">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email" className="log_label">
+      <label htmlFor="name" className="register_label">
+          Full name
+        </label>
+        <input className="register_input" value={name} name='name' id="name" placeholder='Enter full name' type="text" />
+        <label htmlFor="email" className="register_label">
           Email
         </label>
         <input
-          className="log_input"
+          className="register_input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           placeholder="Your email"
         />
-        <label htmlFor="password" className="log_label">
+        <label htmlFor="password" className="register_label">
           Password
         </label>
         <div className={`password-field ${showPassword ? 'show-pass' : ''}`}>
           <input
-            className="log_input"
+            className="register_input"
             type={showPassword ? 'text' : 'password'}
             value={pass}
             onChange={(e) => setPass(e.target.value)}
@@ -54,15 +56,14 @@ const LoginPage = () => {
             {showPassword ? 'Hide' : 'Show'}
           </span>
         </div>
-        <button type="submit" className="log_button">
-          Log In
+        <button type="submit" className="res_button">
+          Register
         </button>
       </form>
       <button className="register-button" onClick={handleRegisterClick}>
-        Don't have an account? Register Here
+        Already have an account? Login here
       </button>
-      </div>
-    </div>
+
     </div>
   );
 };
