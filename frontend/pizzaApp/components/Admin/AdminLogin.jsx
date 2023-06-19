@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './adminlogin.css';
+import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 
 const AdminLogin = () => {
-  const [formData, setFormData] = useState({
+  const history=useNavigate();
+  const [formDatas, setFormData] = useState({
     email: '',
     password: ''
   });
+  const [message,setmessage]=useState("")
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -14,30 +18,55 @@ const AdminLogin = () => {
       [name]: value
     }));
   };
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-  const handleLogin = () => {
-    console.log(formData); // You can modify this to save the data to a database or perform any other actions
+    try {
+      const res = await axios.post("http://localhost:3001/admin/login", {
+        email: formDatas.email,
+        password: formDatas.password,
+      });
+
+      const data = res.data;
+      if (res.data.message ==="Login success") {
+        setmessage("Login Sucess")
+        history("/admin"); 
+      } else if(res.data.message==="User not found, please sign up") {
+        setmessage("User not found, please sign up")
+        setTimeout(() => {
+          setmessage(''); // Clear the message after 3 seconds
+        }, 2000);
+      }
+       else if(res.data.message==="Invalid email or password") {
+        setmessage("Invalid email or password")
+        setTimeout(() => {
+          setmessage(''); // Clear the message after 3 seconds
+        }, 2000);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <div className='form-container'>
-    <div className="form-admin">
+      {message && (
+              <div className="notification">
+                <h3>{message}</h3>
+              </div>
+      )} 
+      <div className="form-admin">
       <div className="form-inner-admin">
+        
         <h2 className='admin-text'>Admin Login</h2>
         <div className="input-wrapper">
           <label>Email:</label>
           <div className="input-group">
-            {/* <span className="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M19.28 6.05C17.82 4.8 15.96 4 13.95 4H10c-1.65 0-3 1.35-3 3v2H4c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-9c0-.55-.45-1-1-1h-3V7c0-.82.66-1.45 1.28-1.95zM14 11v2h-4v-2H8v2H6v-2H4v4h16v-4h-2v2h-2v-2h-2zm4-3h-1.5V7h1.5v1zm0 4h-1.5v-2h1.5v2z" />
-                </svg>
-              </span> */}
               <img className="icon-admin" src='./../icons/email.png'/>
             <input className='input-admin'
               type="email"
               name="email"
-              value={formData.email}
+              value={formDatas.email}
               onChange={handleInputChange}
             />
           </div>
@@ -50,7 +79,7 @@ const AdminLogin = () => {
             className='input-admin'
               type="password"
               name="password"
-              value={formData.password}
+              value={formDatas.password}
               onChange={handleInputChange}
             />
           </div>

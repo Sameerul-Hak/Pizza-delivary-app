@@ -5,7 +5,7 @@ const mongoose=require('mongoose')
 const cors=require('cors')
 const UserRoutes=require("./routes/userRoutes")
 const adminRoutes=require("./routes/adminRoutes")
-app.use(cors())
+app.use(cors({credentials:true,origin:"http://localhost:5173"}))
 app.use(express.json())
 app.use("/user",UserRoutes)
 app.use("/admin",adminRoutes)
@@ -20,4 +20,8 @@ mongoose.connect(MONGO_URL,{
 
 }).catch((err) => {
     console.log(`${err} didnot connect`)
+})
+
+app.listen(3001,()=>{
+    console.log(`server listening on ${3001}`)
 })

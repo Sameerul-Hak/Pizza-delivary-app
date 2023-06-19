@@ -1,8 +1,8 @@
 const express=require("express")
+const { CreateAdminAccount, AdminLogin } = require("../controller/adminController")
 const router=express.Router()
 
 
-router.get("/login",(req,res)=>{
-    res.send("login admin")
-})
+router.post("/signup",CreateAdminAccount)
+router.post("/login",AdminLogin)
 module.exports=router
