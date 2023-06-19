@@ -20,20 +20,20 @@
     color: #333;
   }
   
-  form {
+  .form-loginpage {
     display: flex;
     flex-direction: column;
   }
   
-  input {
+  .input-login {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 4px;
     border: none;
     background-color: #f6f6f6;
   }
-  
-  button {
+
+  .button-loginpage {
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -42,7 +42,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .button-loginpage:hover {
     background-color: #45a049;
   }
   
