@@ -24,6 +24,7 @@
   .form-container {
     display: grid;
     place-items: center;
+    width: 100vw;
     margin: 0;
     height: 100vh;
     padding: var(--space-m);

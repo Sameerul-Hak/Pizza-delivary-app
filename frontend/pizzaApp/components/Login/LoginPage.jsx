@@ -22,6 +22,7 @@ const LoginPage = () => {
   };
 
   return (
+    <div className='body-loginpage'>
     <div className='login_container'>
     <div className='glass-card'>
     <div className="login">
@@ -63,6 +64,7 @@ const LoginPage = () => {
         Don't have an account? Register Here
       </button>
       </div>
+    </div>
     </div>
     </div>
   );

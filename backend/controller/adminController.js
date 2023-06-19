@@ -1,6 +1,7 @@
 const userModel=require("./../model/userModel")
+const multer=require('multer')
 const bcrypt=require('bcryptjs')
-
+const PizzaModel=require("./../model/pizzaSchema")
 exports.CreateAdminAccount=async(req,res,next)=>{
     let extistinguser;
     try{
@@ -57,4 +58,7 @@ exports.AdminLogin = async (req, res) => {
           user: extistinguser,
         });
       };
-      
+  
+exports.allpizzas=(req,res)=>{
+  PizzaModel.find().then((pizzas)=>res.json(pizzas)).catch((err)=>console.log(err))
+}
