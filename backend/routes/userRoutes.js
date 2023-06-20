@@ -1,6 +1,6 @@
 
 const userController=require("./../controller/usersController")
-const { detailpizzadmin} = require("../controller/adminController")
+const { detailpizzauser} = require("../controller/adminController")
 
 
 const express = require('express');
@@ -10,7 +10,7 @@ const router = express.Router();
 const Pizza = require('../model/pizzaSchema');
 
 // Single Pizza Route
-router.get('/singlepizza/:id', async (req, res) => {
+router.get('/detailpizzauser/:id', async (req, res) => {
     const { id } = req.params;
 
     try {

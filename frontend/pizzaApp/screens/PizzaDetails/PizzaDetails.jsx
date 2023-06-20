@@ -1,73 +1,122 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function PizzaDetails() {
   const [pizza, setPizza] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    axios
+      .get(`http://localhost:3001/admin/detailpizzaadmin/${id}`)
+      .then((res) => setPizza(res.data))
+      .catch((err) => console.log(err));
+  }, [id]);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/admin/detailpizzaadmin/${id}');
-      setPizza(response.data);
-    } catch (error) {
-      console.error('Error fetching pizza data:', error);
-    }
-  };
+  const imageUrl = pizza ? `http://localhost:3001/images/${pizza.image}` : '';
 
   const containerStyle = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh',
+    backgroundImage:`url(${imageUrl})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   };
 
   const detailsContainerStyle = {
-    maxWidth: '800px',
+    width: '80%',
+    maxWidth: '1000px',
     padding: '40px',
     backgroundColor: '#fff',
     borderRadius: '10px',
     boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+    transition: 'transform 0.3s ease-in-out',
+    transform: 'scale(1)',
+    ':hover': {
+      transform: 'scale(1.02)',
+    },
   };
 
   const imageStyle = {
     width: '100%',
+    height:"400px",
     marginBottom: '20px',
-    borderRadius: '5px',
+    borderRadius: '10px',
   };
 
   const titleStyle = {
-    fontSize: '24px',
+    fontSize: '32px',
     fontWeight: 'bold',
-    marginBottom: '10px',
+    marginBottom: '20px',
+    color: '#333',
   };
 
   const descriptionStyle = {
-    fontSize: '16px',
+    fontSize: '18px',
     marginBottom: '20px',
+    color: '#555',
   };
 
   const infoItemStyle = {
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: '10px',
+    marginBottom: '15px',
+    color: '#777',
   };
 
   const labelStyle = {
     fontWeight: 'bold',
+    marginRight: '10px',
+    color: '#333',
   };
 
   const valueStyle = {
-    marginLeft: '10px',
+    color: '#555',
+  };
+
+  const buttonContainerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '30px',
+  };
+
+  const buttonStyle = {
+    padding: '15px 30px',
+    borderRadius: '5px',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s ease-in-out',
+    ':hover': {
+      backgroundColor: '#0056b3',
+    },
+  };
+
+  const backButtonStyle = {
+    ...buttonStyle,
+    backgroundColor: '#6c757d',
+    ':hover': {
+      backgroundColor: '#4e555a',
+    },
+  };
+
+  const handlePlaceOrder = () => {
+    // Handle placing an order logic here
+    
+  };
+
+  const handleGoBack = () => {
+    navigate('/menu'); 
   };
 
   return (
     <div style={containerStyle}>
       {pizza ? (
         <div style={detailsContainerStyle}>
-          <img src={pizza.image} alt={pizza.name} style={imageStyle} />
+          <img src={"http://localhost:3001/images/"+pizza.image} alt={pizza.name} style={imageStyle} />
           <h2 style={titleStyle}>{pizza.name}</h2>
           <p style={descriptionStyle}>{pizza.description}</p>
           <div style={infoItemStyle}>
@@ -101,6 +150,14 @@ function PizzaDetails() {
           <div style={infoItemStyle}>
             <span style={labelStyle}>Status:</span>
             <span style={valueStyle}>{pizza.status}</span>
+          </div>
+          <div style={buttonContainerStyle}>
+            <button style={buttonStyle} onClick={handlePlaceOrder}>
+              Place Order
+            </button>
+            <button style={backButtonStyle} onClick={handleGoBack}>
+              Go Back
+            </button>
           </div>
         </div>
       ) : (
