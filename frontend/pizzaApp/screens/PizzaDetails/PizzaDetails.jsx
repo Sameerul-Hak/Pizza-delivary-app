@@ -105,6 +105,7 @@ function PizzaDetails() {
 
   const handlePlaceOrder = () => {
     // Handle placing an order logic here
+    console.log(pizza)
     
   };
 

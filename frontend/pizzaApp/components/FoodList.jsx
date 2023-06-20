@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 
 
 function FoodList() {
-  const [foods, setFoods] = useState([]);
+  const history=useNavigate();
 
+  const [foods, setFoods] = useState([]);
+  const [message,setmessage]=useState("")
   useEffect(() => {
     fetchData();
   }, []);
@@ -88,12 +91,38 @@ function FoodList() {
   };
 
   const handlePlaceOrderClick = (food) => {
-    console.log("placed:",food);
+    
+    let d={
+      name: food.name,
+      description: food.description,
+      quantity: food.quantity,
+      tags: food.tags,
+      price: food.price,
+      size: food.size,
+      toppings: food.toppings,
+      discount: food.discount,
+      typeofpizza: food.typeofpizza,
+      base: food.base,
+      sauce: food.sauce,
+      image:food.image
+    }
+   
+
+    axios
+      .post("http://localhost:3001/orders/createorder",d)
+      .then((response) => {
+        setmessage(response.data.message);
+        history("/menu")
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
     <div>
       <h2>Food List</h2>
+      {message && <h1>{message}</h1>}
       <div style={gridContainerStyle}>
         {foods.map((food) => (
           <div
