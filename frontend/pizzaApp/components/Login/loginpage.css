@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* /* * {
     box-sizing: border-box;
   }
@@ -5,6 +6,13 @@
   .entry-contain {
     height: 100vh;
     width: 206vh;
+=======
+
+  
+ .body-loginpage {
+    height: 100vh;
+    width: 100vw;
+>>>>>>> 39d794cea82131de772a2ceb7f58dfe187caf0d3
     display: flex;
     justify-content: center;
     align-items: center;

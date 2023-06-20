@@ -1,12 +1,20 @@
 const express=require("express")
 const app=express()
 const multer=require('multer')
+const path=require('path')
 const mongoose=require('mongoose')
 const cors=require('cors')
+const bodyParser = require('body-parser');
+
 const UserRoutes=require("./routes/userRoutes")
 const adminRoutes=require("./routes/adminRoutes")
+
+// app.use(cookieparser())
+app.use(bodyParser.json());
 app.use(cors({credentials:true,origin:"http://localhost:5173"}))
 app.use(express.json())
+app.use(express.static("public"))
+
 app.use("/user",UserRoutes)
 app.use("/admin",adminRoutes)
 //to run server check u r in backend folder ->pizzaApp\backend> then type "npm start"
@@ -21,6 +29,18 @@ mongoose.connect(MONGO_URL,{
 }).catch((err) => {
     console.log(`${err} didnot connect`)
 })
+
+// const storage=multer.diskStorage({
+//     destination:(req,file,cb)=>{
+//         cb(null,'public/images')
+//     },
+//     filename:(req,file,cb)=>{
+//         cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname));
+//     }
+// })
+// const upload=multer({
+//     storage:storage
+// })
 
 app.listen(3001,()=>{
     console.log(`server listening on ${3001}`)
