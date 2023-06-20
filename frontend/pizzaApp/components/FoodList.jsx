@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+
 
 function FoodList() {
   const [foods, setFoods] = useState([]);
@@ -59,9 +62,33 @@ function FoodList() {
     color: '#ff5722',
   };
 
+  const buttonStyle = {
+    backgroundColor: '#ff5722',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    padding: '8px 12px',
+    margin: '5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  };
+
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
   const handleFoodItemClick = (food) => {
     // Handle click event for a food item
-    console.log('Clicked:', food);
+     navigate(`/singlepizza/${food._id}`);
+  };
+
+  const handleViewMoreClick = (food) => {
+    // Handle click event for the "View More" button
+    console.log('View More:', food);
+  };
+
+  const handlePlaceOrderClick = (food) => {
+    console.log("placed:",food);
   };
 
   return (
@@ -75,13 +102,15 @@ function FoodList() {
             onClick={() => handleFoodItemClick(food)}
           >
             <img
-              src={`http://localhost:3001/images/${food.image}`}
+              src={food.image}
               alt={food.name}
               style={foodItemImageStyle}
             />
             <h3 style={foodItemNameStyle}>{food.name}</h3>
             <p style={foodItemDescriptionStyle}>{food.description}</p>
             <p style={foodItemPriceStyle}>Price: ${food.price}</p>
+            <button style={buttonStyle} onClick={() => handleViewMoreClick(food)}>View More</button>
+            <button style={buttonStyle} onClick={() => handlePlaceOrderClick(food)}>Place Order</button>
           </div>
         ))}
       </div>

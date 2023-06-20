@@ -12,7 +12,7 @@ import PlaceOrder from "./../components/PlaceOrder/PlaceOrder"
 import Menu from "../screens/Menu/Menu"
 import Cart from '../screens/Cart/Cart';
 import EditPizzaForm from '../components/DetailPizza/EditPizza';
-
+import PizzaDetails from '../screens/PizzaDetails/PizzaDetails';
 
 
 const App = () => {
@@ -32,6 +32,7 @@ const App = () => {
         <Route path="/createpizzaadmin" element={<CreatePizza />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/edit-pizza/:id" element={<EditPizzaForm/>} />
+        <Route path="/singlepizza/:id" element={<PizzaDetails/>} />
       </Routes>
     </Router>
   );
