@@ -22,11 +22,8 @@ const LoginPage = () => {
   };
 
   return (
-<<<<<<< HEAD
     <div className='entry-contain'>
-=======
     <div className='body-loginpage'>
->>>>>>> 39d794cea82131de772a2ceb7f58dfe187caf0d3
     <div className='login_container'>
     <div className='glass-card'>
     <div className="login">
@@ -68,6 +65,7 @@ const LoginPage = () => {
         Don't have an account? Register Here
       </button>
       </div>
+    </div>
     </div>
     </div>
     </div>
