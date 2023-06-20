@@ -102,7 +102,7 @@ function FoodList() {
             onClick={() => handleFoodItemClick(food)}
           >
             <img
-              src={food.image}
+              src={`http://localhost:3001/images/` + food.image}
               alt={food.name}
               style={foodItemImageStyle}
             />
