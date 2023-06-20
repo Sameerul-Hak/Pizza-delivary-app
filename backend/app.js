@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const UserRoutes=require("./routes/userRoutes")
 const adminRoutes=require("./routes/adminRoutes")
 const homeRoutes=require("./routes/homePizzas.js")
+const authRoutes=require("./routes/auth.js")
 
 // app.use(cookieparser())
 app.use(bodyParser.json());
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use(express.static("public"))
 
 app.use("/user",UserRoutes)
+app.use("/auth", authRoutes)
 app.use("/admin",adminRoutes)
 app.use("/home",homeRoutes)
 //to run server check u r in backend folder ->pizzaApp\backend> then type "npm start"
