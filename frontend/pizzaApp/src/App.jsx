@@ -11,6 +11,7 @@ import DetailPizza from "./../components/DetailPizza/DetailPizza"
 import PlaceOrder from "./../components/PlaceOrder/PlaceOrder"
 import Menu from "../screens/Menu/Menu"
 import Cart from '../screens/Cart/Cart';
+import EditPizzaForm from '../components/DetailPizza/EditPizza';
 
 
 
@@ -22,7 +23,7 @@ const App = () => {
         <Route path="/register" element={<RegisterPage/>} />
         <Route path="/home" element={<HomePage/>} />
         <Route path="/detailpizza/:id" element={<DetailPizza />} />
-        <Route path="/detailP/:id" element={<DetailP />} />
+        {/* <Route path="/detailP/:id" element={<DetailP />} /> */}
         <Route path="/custompizza" element={<CustomPizza />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/menu" element={<Menu />} />
