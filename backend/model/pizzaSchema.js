@@ -63,6 +63,10 @@ const pizzaSchema=new mongoose.Schema({
         enum: ['marinara', 'barbecue', 'alfredo', 'pesto', 'ranch'],
         required: true
     },
+    status:{
+        type:String,
+        default:"available"
+    },
     comments: [commentSchema]
 })
 

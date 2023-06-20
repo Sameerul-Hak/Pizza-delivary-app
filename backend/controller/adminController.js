@@ -52,7 +52,6 @@ exports.AdminLogin = async (req, res) => {
           });
         }
       
-        // Send the success response outside the if block
         return res.status(200).json({
           message: "Login success",
           user: extistinguser,
@@ -66,4 +65,10 @@ exports.allpizzas=(req,res)=>{
 exports.detailpizzadmin=(req,res)=>{
   console.log(req.params.id)
   PizzaModel.findById({_id:req.params.id}).then((result)=>res.json(result)).catch((err)=>console.log(err))
+}
+
+
+exports.deletepizza=(req, res) => {
+    const pizzaId = req.params.id;
+    PizzaModel.findByIdAndDelete(pizzaId).then((result)=>res.json({message:"deleted successfully"})).catch((err)=>console.log(err))
 }

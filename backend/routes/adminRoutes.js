@@ -1,11 +1,10 @@
 const express=require("express")
-const { CreateAdminAccount, AdminLogin, createpizza, allpizzas, detailpizzadmin } = require("../controller/adminController")
+const { CreateAdminAccount, AdminLogin, createpizza, allpizzas, detailpizzadmin, deletepizza, editpizza } = require("../controller/adminController")
 const router=express.Router()
 const multer=require('multer')
 const PizzaModel=require("./../model/pizzaSchema")
 const path=require('path')
 
-// Configure multer storage
 const storage=multer.diskStorage({
     destination:(req,file,cb)=>{
         cb(null,'public/images')
@@ -38,5 +37,30 @@ router.post("/createpizza",upload.single('file'),(req,res)=>{
     }).then((result)=>res.json({message:"pizza saved"})).catch((err)=>console.log(err))
 })
 router.get("/detailpizzaadmin/:id",detailpizzadmin)
+router.delete("/detailpizzaadmin/:id",deletepizza)
 router.get("/allpizzas",allpizzas)
+router.put('/editpizzaadmin/:id',upload.single('file'),(req, res) => {
+    const data={
+      name:req.body.name,
+          description:req.body.description,
+          image:req.file.filename,
+          size:req.body.size,
+          quantity:req.body.quantity,
+          price:req.body.price,
+          tags:req.body.tags,
+          toppings:req.body.toppings,
+          discount:req.body.discount,
+          typeofpizza:req.body.typeofpizza,
+          base:req.body.base,
+          sauce:req.body.sauce,
+    }
+    console.log(data)
+    // console.log(req.body)
+  PizzaModel.findByIdAndUpdate({_id:req.params.id},data,{
+    new: true,
+    upsert: true,
+    rawResult: true // Return the raw result from the MongoDB driver
+  }).then((result)=>res.json({message:" pizza updated successfully"})).catch((err)=>console.log(err))
+  
+  })
 module.exports=router

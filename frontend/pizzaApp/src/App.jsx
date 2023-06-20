@@ -9,6 +9,8 @@ import AdminLogin from "./../components/Admin/AdminLogin"
 import CustomPizza from "./../components/CustomPizza/CustomPizza"
 import DetailPizza from "./../components/DetailPizza/DetailPizza"
 import PlaceOrder from "./../components/PlaceOrder/PlaceOrder"
+import EditPizzaForm from '../components/DetailPizza/EditPizza';
+import DetailP from '../components/Home/Detail/DetailP';
 
 
 
@@ -20,11 +22,13 @@ const App = () => {
         <Route path="/register" element={<RegisterPage/>} />
         <Route path="/home" element={<HomePage/>} />
         <Route path="/detailpizza/:id" element={<DetailPizza />} />
+        <Route path="/detailP/:id" element={<DetailP />} />
         <Route path="/custompizza" element={<CustomPizza />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/createpizzaadmin" element={<CreatePizza />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/edit-pizza/:id" element={<EditPizzaForm/>} />
       </Routes>
     </Router>
   );

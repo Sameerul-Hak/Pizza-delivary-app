@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import { useParams, useNavigate } from 'react-router-dom';
 function DetailPizza() {
   const [detailpizza, setDetailPizza] = useState(null);
   const { id } = useParams();
+  const history = useNavigate();
+  const handleedit=()=>{
+    // <Route path="/edit-pizza/:id" component={EditPizzaForm} />
+    history(`/edit-pizza/${id}`);
+  }
+  const handledelete=()=>{
+    axios
+    .delete(`http://localhost:3001/admin/detailpizzaadmin/${id}`)
+    .then(() => {
+      history('/admin');
+    })
+    .catch((err) => console.log(err));
+  }
 
   useEffect(() => {
     axios
@@ -32,6 +44,9 @@ function DetailPizza() {
       <p>Type of Pizza: {detailpizza.typeofpizza}</p>
       <p>Tags: {detailpizza.tags}</p>
       <p>Discount: {detailpizza.discount}</p>
+      <p>status: {detailpizza.status}</p>
+      <button onClick={handleedit}>edit</button>
+      <button onClick={handledelete}>delete</button>
     </div>
   );
 }
