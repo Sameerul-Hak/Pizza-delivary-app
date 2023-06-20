@@ -93,7 +93,7 @@ const AdminLogin = () => {
             password:admin1234
         </h3>
       </div>
-    </div>
+      </div>
     </div>
   );
 };

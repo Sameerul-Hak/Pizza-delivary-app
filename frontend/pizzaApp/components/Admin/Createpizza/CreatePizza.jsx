@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import './CreatePizza.css';
 
 const PizzaForm = () => {
   const history=useNavigate();
@@ -80,89 +81,96 @@ const PizzaForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="text" name="name" value={pizzaData.name} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Description:
-        <textarea name="description" value={pizzaData.description} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Quantity:
-        <input type="number" name="quantity" value={pizzaData.quantity} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Tags:
-        <input type="text" name="tags" value={pizzaData.tags} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Price:
-        <input type="number" name="price" value={pizzaData.price} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Size:
-        <select name="size" value={pizzaData.size} onChange={handleInputChange}>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Toppings:
-        <input type="text" name="toppings" value={pizzaData.toppings} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Discount:
-        <input type="text" name="discount" value={pizzaData.discount} onChange={handleInputChange} />
-      </label>
-      <br />
-      <label>
-        Type of Pizza:
-        <select name="typeofpizza" value={pizzaData.typeofpizza} onChange={handleInputChange}>
-          <option value="veg">Veg</option>
-          <option value="non-veg">Non-Veg</option>
-          <option value="cheese">Cheese</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Base:
-        <select name="base" value={pizzaData.base} onChange={handleInputChange}>
-          <option value="thin crust">Thin Crust</option>
-          <option value="thick crust">Thick Crust</option>
-          <option value="deep dish">Deep Dish</option>
-          <option value="whole wheat">Whole Wheat</option>
-          <option value="gluten-free">Gluten-Free</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Sauce:
-        <select name="sauce" value={pizzaData.sauce} onChange={handleInputChange}>
-          <option value="marinara">Marinara</option>
-          <option value="barbecue">Barbecue</option>
-          <option value="alfredo">Alfredo</option>
-          <option value="pesto">Pesto</option>
-          <option value="ranch">Ranch</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Image:
-        <input type="file" onChange={handleFileChange} />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+    <div className="create_container">
+      <div className="header">
+        <h2>Create Pizzas</h2>
+      </div>
+      <div className="create_pizza">
+        <form onSubmit={handleSubmit} className="create_form">
+        <label>
+          Name:
+          <input type="text" name="name" value={pizzaData.name} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Description:
+          <textarea name="description" value={pizzaData.description} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Quantity:
+          <input type="number" name="quantity" value={pizzaData.quantity} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Tags:
+          <input type="text" name="tags" value={pizzaData.tags} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Price:
+          <input type="number" name="price" value={pizzaData.price} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Size:
+          <select name="size" value={pizzaData.size} onChange={handleInputChange}>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </label>
+        <br />
+        <label>
+          Toppings:
+          <input type="text" name="toppings" value={pizzaData.toppings} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Discount:
+          <input type="text" name="discount" value={pizzaData.discount} onChange={handleInputChange} />
+        </label>
+        <br />
+        <label>
+          Type of Pizza:
+          <select name="typeofpizza" value={pizzaData.typeofpizza} onChange={handleInputChange}>
+            <option value="veg">Veg</option>
+            <option value="non-veg">Non-Veg</option>
+            <option value="cheese">Cheese</option>
+          </select>
+        </label>
+        <br />
+        <label>
+          Base:
+          <select name="base" value={pizzaData.base} onChange={handleInputChange}>
+            <option value="thin crust">Thin Crust</option>
+            <option value="thick crust">Thick Crust</option>
+            <option value="deep dish">Deep Dish</option>
+            <option value="whole wheat">Whole Wheat</option>
+            <option value="gluten-free">Gluten-Free</option>
+          </select>
+        </label>
+        <br />
+        <label>
+          Sauce:
+          <select name="sauce" value={pizzaData.sauce} onChange={handleInputChange}>
+            <option value="marinara">Marinara</option>
+            <option value="barbecue">Barbecue</option>
+            <option value="alfredo">Alfredo</option>
+            <option value="pesto">Pesto</option>
+            <option value="ranch">Ranch</option>
+          </select>
+        </label>
+        <br />
+        <label>
+          Image:
+          <input type="file" onChange={handleFileChange} />
+        </label>
+        <br />
+        <button type="submit" className="Create_btn">Submit</button>
+      </form>
+      </div>
+    </div>
   );
 };
 
