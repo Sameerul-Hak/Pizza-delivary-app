@@ -62,3 +62,8 @@ exports.AdminLogin = async (req, res) => {
 exports.allpizzas=(req,res)=>{
   PizzaModel.find().then((pizzas)=>res.json(pizzas)).catch((err)=>console.log(err))
 }
+
+exports.detailpizzadmin=(req,res)=>{
+  console.log(req.params.id)
+  PizzaModel.findById({_id:req.params.id}).then((result)=>res.json(result)).catch((err)=>console.log(err))
+}

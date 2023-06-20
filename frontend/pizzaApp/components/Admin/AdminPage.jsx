@@ -18,12 +18,12 @@ function AdminPage() {
         <div>
           <Link to="/createpizzaadmin">create pizza</Link>
            {userdetails.map(user => (
-        <Link key={user._id} to={`/detailpizza/${user._id}`}>
+        <a key={user._id} href={`/detailpizza/${user._id}`}>
           <div>
             <h3>{user.name}</h3>
             <img width="100px" height="200px" src={`http://localhost:3001/images/` + user.image} alt='images' />
           </div>
-        </Link>
+        </a>
       ))}
         </div>
       );
