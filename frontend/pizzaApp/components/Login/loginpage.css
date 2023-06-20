@@ -1,15 +1,19 @@
-* {
+/* /* * {
     box-sizing: border-box;
   }
-  
-  body {
+   */
+  .entry-contain {
     height: 100vh;
+    width: 206vh;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
-    background:  #dad6e2;
-  }
+    background:  url('./../../assets/images/entry2.jpg');
+    background-size: cover;
+    overflow-x: hidden;
+  } 
+
   .login_container{
       display: flex;
 
@@ -23,12 +27,14 @@
   
   .log_label {
     margin-bottom: 5px;
+    margin-left: 20px;
     display: flex;
   }
   
   .log_input{
     width: 300px;
     padding: 10px;
+    margin-left: 20px;
     margin-bottom: 15px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -41,10 +47,8 @@
   
   .password-field input[type='password'] {
     font-size: 16px;
-    padding: 5px 40px 5px 5px;
-    width: 100%;
+    /* width: 100%; */
     margin-right: 10px;
-    height: 40px;
     
   }
   
@@ -69,7 +73,8 @@
     padding: 10px 20px;
     background-color: #4caf50;
     color: #fff;
-    margin-left: 100px;
+    margin:20px;
+    margin-left: 120px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -95,7 +100,7 @@
     width: 400px;
     align-items: center;
     justify-content: space-between;
-    padding: 50px;
+    padding: 20px;
     background: rgba( 255, 255, 255, 0.3 );
     backdrop-filter: blur( 7.5px );
     -webkit-backdrop-filter: blur( 7.5px );

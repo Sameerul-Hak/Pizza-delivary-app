@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./register.css"
+import './../login/Loginpage.css';
 
-const LoginPage = () => {
+const RegisterPage = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -21,28 +22,37 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login">
-      <form onSubmit={handleSubmit}>
-      <label htmlFor="name" className="register_label">
-          Full name
+    <div className='entry-contain'>
+    <div className='register_container'>
+    <div className='glass-card'>
+    <div className="register">
+      <form onSubmit={handleSubmit}>  
+      <label htmlFor="name" className="log_label">
+          Name
         </label>
-        <input className="register_input" value={name} name='name' id="name" placeholder='Enter full name' type="text" />
-        <label htmlFor="email" className="register_label">
+        <input
+          className="log_input"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          type="name"
+          placeholder="Your Name"
+        />
+        <label htmlFor="email" className="log_label">
           Email
         </label>
         <input
-          className="register_input"
+          className="log_input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           placeholder="Your email"
         />
-        <label htmlFor="password" className="register_label">
+        <label htmlFor="password" className="log_label">
           Password
         </label>
         <div className={`password-field ${showPassword ? 'show-pass' : ''}`}>
           <input
-            className="register_input"
+            className="log_input"
             type={showPassword ? 'text' : 'password'}
             value={pass}
             onChange={(e) => setPass(e.target.value)}
@@ -56,16 +66,20 @@ const LoginPage = () => {
             {showPassword ? 'Hide' : 'Show'}
           </span>
         </div>
-        <button type="submit" className="res_button">
+        <button type="submit" className="log_button">
           Register
         </button>
       </form>
       <button className="register-button" onClick={handleRegisterClick}>
         Already have an account? Login here
       </button>
-
+      </div>
+    </div>
+    </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
+
+

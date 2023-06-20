@@ -22,10 +22,11 @@ const LoginPage = () => {
   };
 
   return (
+    <div className='entry-contain'>
     <div className='login_container'>
     <div className='glass-card'>
     <div className="login">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>  
         <label htmlFor="email" className="log_label">
           Email
         </label>
@@ -63,6 +64,7 @@ const LoginPage = () => {
         Don't have an account? Register Here
       </button>
       </div>
+    </div>
     </div>
     </div>
   );
