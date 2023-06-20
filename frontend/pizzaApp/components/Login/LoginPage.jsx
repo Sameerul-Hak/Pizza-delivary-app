@@ -24,7 +24,7 @@ const LoginPage = () => {
   return (
     <div className='entry-contain'>
     <div className='body-loginpage'>
->>>>>>> 39d794cea82131de772a2ceb7f58dfe187caf0d3
+{/* >>>>>>> 39d794cea82131de772a2ceb7f58dfe187caf0d3 */}
     <div className='login_container'>
     <div className='glass-card'>
     <div className="login">
@@ -69,6 +69,7 @@ const LoginPage = () => {
     </div>
     </div>
     </div>
+  </div>
   );
 };
 
