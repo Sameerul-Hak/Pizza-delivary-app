@@ -35,6 +35,7 @@ exports.AdminLogin = async (req, res) => {
         let extistinguser;
         try {
           extistinguser = await userModel.findOne({ email: req.body.email });
+          console.log(extistinguser)
         } catch (err) {
           console.log(err);
         }

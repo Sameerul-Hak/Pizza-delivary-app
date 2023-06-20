@@ -10,6 +10,7 @@ const AdminLogin = () => {
     password: ''
   });
   const [message,setmessage]=useState("")
+  // const [isadminauth,setadminauth]=useState(false)
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,17 +29,21 @@ const AdminLogin = () => {
       });
 
       const data = res.data;
+      console.log(data)
       if (res.data.message ==="Login success") {
+        // setadminauth(true)
         setmessage("Login Sucess")
         history("/admin"); 
       } else if(res.data.message==="User not found, please sign up") {
         setmessage("User not found, please sign up")
+        console.log(res.data)
         setTimeout(() => {
           setmessage(''); // Clear the message after 3 seconds
         }, 2000);
       }
        else if(res.data.message==="Invalid email or password") {
         setmessage("Invalid email or password")
+        console.log(res.data)
         setTimeout(() => {
           setmessage(''); // Clear the message after 3 seconds
         }, 2000);
