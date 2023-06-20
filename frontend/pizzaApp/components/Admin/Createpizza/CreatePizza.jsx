@@ -81,6 +81,7 @@ const PizzaForm = () => {
   };
 
   return (
+    <div className="body-createpizza">
     <div className="create_container">
       <div className="header">
         <h2>Create Pizzas</h2>
@@ -170,6 +171,7 @@ const PizzaForm = () => {
         <button type="submit" className="Create_btn">Submit</button>
       </form>
       </div>
+    </div>
     </div>
   );
 };

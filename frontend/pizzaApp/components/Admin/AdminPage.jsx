@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import "./adminpage.css"
 import axios from 'axios'
 import DetailPizza from '../DetailPizza/DetailPizza';
 import { Link } from 'react-router-dom';
 import pizza from './../../assets/images/icons8-pizza-50.png'
 import price from './../../assets/images/icons8-price-50.png'
+import { AdminAuthContext } from './AdminAuthContext';
 function AdminPage() {
+  const { isadminauth } = useContext(AdminAuthContext);
+console.log(isadminauth)
   const [userdetails, setUserdetails] = useState([]);
 
   useEffect(()=>{
@@ -17,6 +20,7 @@ function AdminPage() {
       console.log(userdetails)
       return (
         <div className='body-admin'>
+            {isadminauth}
           <nav className='nav-admin'>
             <Link className='spl' to="/admin">Admin</Link>
           <Link className='nav-t' to="/myorders">my orders</Link>

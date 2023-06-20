@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import './adminlogin.css';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import { AdminAuthContext } from './AdminAuthContext';
 
 const AdminLogin = () => {
   const history=useNavigate();
@@ -10,7 +11,7 @@ const AdminLogin = () => {
     password: ''
   });
   const [message,setmessage]=useState("")
-  // const [isadminauth,setadminauth]=useState(false)
+  const { isadminauth, setisadminauth } = useContext(AdminAuthContext);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -21,38 +22,38 @@ const AdminLogin = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
       const res = await axios.post("http://localhost:3001/admin/login", {
         email: formDatas.email,
         password: formDatas.password,
       });
-
+  
       const data = res.data;
       console.log(data)
-      if (res.data.message ==="Login success") {
-        // setadminauth(true)
-        setmessage("Login Sucess")
-        history("/admin"); 
-      } else if(res.data.message==="User not found, please sign up") {
-        setmessage("User not found, please sign up")
-        console.log(res.data)
+      if (res.data.message === "Login success") {
+        setisadminauth(true);
+        setmessage("Login Success");
+        history("/admin");
+      } else if (res.data.message === "User not found, please sign up") {
+        setmessage("User not found, please sign up");
+        console.log(res.data);
         setTimeout(() => {
-          setmessage(''); // Clear the message after 3 seconds
+          setmessage(""); 
         }, 2000);
-      }
-       else if(res.data.message==="Invalid email or password") {
-        setmessage("Invalid email or password")
-        console.log(res.data)
+      } else if (res.data.message === "Invalid email or password") {
+        setmessage("Invalid email or password");
+        console.log(res.data);
         setTimeout(() => {
-          setmessage(''); // Clear the message after 3 seconds
+          setmessage("");
         }, 2000);
       }
     } catch (err) {
       console.log(err);
     }
   };
-
+  console.log(isadminauth,"form login"); 
+  
   return (
     <div className='form-container'>
       {message && (

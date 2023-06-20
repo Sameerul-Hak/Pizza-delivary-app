@@ -13,27 +13,32 @@ import Menu from "../screens/Menu/Menu"
 import Cart from '../screens/Cart/Cart';
 import EditPizzaForm from '../components/DetailPizza/EditPizza';
 import PizzaDetails from '../screens/PizzaDetails/PizzaDetails';
-
+import { AdminAuthProvider } from './../components/Admin/AdminAuthContext';
+import PrivateRoutes from './PrivateRoute';
 
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<LoginPage/>} />
-        <Route path="/register" element={<RegisterPage/>} />
-        <Route path="/home" element={<HomePage/>} />
-        <Route path="/detailpizza/:id" element={<DetailPizza />} />
-        {/* <Route path="/detailP/:id" element={<DetailP />} /> */}
-        <Route path="/custompizza" element={<CustomPizza />} />
-        <Route path="/placeorder" element={<PlaceOrder />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/adminlogin" element={<AdminLogin />} />
-        <Route path="/createpizzaadmin" element={<CreatePizza />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route path="/edit-pizza/:id" element={<EditPizzaForm/>} />
-        <Route path="/singlepizza/:id" element={<PizzaDetails/>} />
-      </Routes>
+      <AdminAuthProvider>
+        <Routes>
+        <Route element={<PrivateRoutes/>}>
+          <Route path="/admin" element={<AdminPage />} />
+        </Route>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/detailpizza/:id" element={<DetailPizza />} />
+          {/* <Route path="/detailP/:id" element={<DetailP />} /> */}
+          <Route path="/custompizza" element={<CustomPizza />} />
+          <Route path="/placeorder" element={<PlaceOrder />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/adminlogin" element={<AdminLogin />} />
+          <Route path="/createpizzaadmin" element={<CreatePizza />} />
+          <Route path="/edit-pizza/:id" element={<EditPizzaForm />} />
+          <Route path="/singlepizza/:id" element={<PizzaDetails />} />
+        </Routes>
+      </AdminAuthProvider>
     </Router>
   );
 };
