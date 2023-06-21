@@ -1,5 +1,8 @@
 .body-createpizza{
-    background-color:aliceblue;
+    /* background-color:aliceblue; */
+    background-image: url(./../../../assets/images/entrybg.jpeg);
+    
+    
 }
 
 .create_form{
@@ -19,8 +22,8 @@
     margin:10px 0;
     padding-bottom:10px;
     width:180px;
-    color:#78788c;
-    border-bottom:3px solid #78788c;
+    color:yellow;
+    border-bottom:3px solid yellow;
     position: relative;
     display: flex;
     align-items: center;
