@@ -23,7 +23,7 @@ console.log(isadminauth)
             {isadminauth}
           <nav className='nav-admin'>
             <Link className='spl' to="/admin">Admin</Link>
-          <Link className='nav-t' to="/myorders">my orders</Link>
+          <Link className='nav-t' to="/adminorders">my orders</Link>
           <Link className='nav-t' to="/createpizzaadmin">create pizza</Link>
           </nav>
           <div className='admin-contianer'>

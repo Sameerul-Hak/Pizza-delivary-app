@@ -65,6 +65,7 @@ function Orders() {
             <h5 style={{ marginLeft: 'auto', paddingRight: '20px', fontSize: '20px' }}>
               Type: {ord.typeofpizza}
             </h5>
+            <h4>username: {ord.username}</h4>
             <hr className="hrtag" />
             <div className="pqtype">
               <h3 className="pqh3">
@@ -80,7 +81,6 @@ function Orders() {
               <h3 className="pqh3">Tags: #{ord.tags}</h3>
             </div>
             <h3 className="des">{ord.description}</h3>
-
             <div>
               <select
                 id="status"

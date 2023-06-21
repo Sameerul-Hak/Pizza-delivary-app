@@ -10,14 +10,13 @@ import CustomPizza from "../screens/CustomPizza/CustomPizza"
 import DetailPizza from "./../components/DetailPizza/DetailPizza"
 import PlaceOrder from "./../components/PlaceOrder/PlaceOrder"
 import Menu from "../screens/Menu/Menu"
-import Cart from '../screens/Cart/Cart';
 import EditPizzaForm from '../components/DetailPizza/EditPizza';
 import PizzaDetails from '../screens/PizzaDetails/PizzaDetails';
 import { AdminAuthProvider } from './../components/Admin/AdminAuthContext';
 import PrivateRoutes from './PrivateRoute';
 import Orders from '../components/Admin/orders/Orders';
 import { UserProvider } from '../components/UserContext';
-
+import Cartuser from "../components/CartUser/Cart"
 const App = () => {
 
   return (
@@ -38,10 +37,10 @@ const App = () => {
           <Route path="/custompizza" element={<CustomPizza />} />
           <Route path="/placeorder" element={<PlaceOrder />} />
           <Route path="/menu" element={<Menu />} />
-          <Route path="/cart" element={<Cart />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/singlepizza/:id" element={<PizzaDetails />} />
           <Route path="/adminorders" element={<Orders />} />
+          <Route path="/usercart" element={<Cartuser/>} />
         </Routes>
         </UserProvider>
       </AdminAuthProvider>

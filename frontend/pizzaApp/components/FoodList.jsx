@@ -83,12 +83,12 @@ function FoodList() {
 
   const handleFoodItemClick = (food) => {
     // Handle click event for a food item
-     navigate(`/singlepizza/${food._id}`);
+     ;
   };
 
   const handleViewMoreClick = (food) => {
     // Handle click event for the "View More" button
-    console.log('View More:', food);
+    navigate(`/singlepizza/${food._id}`);
   };
 
   const handlePlaceOrderClick = (food) => {
@@ -111,14 +111,26 @@ function FoodList() {
    
 
     axios
-      .post(`http://localhost:3001/orders/createorder/${user.name}`,d)
-      .then((response) => {
-        setmessage(response.data.message);
-        history("/menu")
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  .post(`http://localhost:3001/orders/createorder/${user.name}`, d)
+  .then((response) => {
+    if (response.data.message === "error") {
+      setmessage("You have already placed this order");
+      setTimeout(() => {
+        setmessage("");
+        navigate("/menu");
+      }, 3000); 
+    } else {
+      setmessage(response.data.message);
+      setTimeout(() => {
+        setmessage("");
+        navigate("/menu");
+      }, 3000);
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
   };
 
   return (
