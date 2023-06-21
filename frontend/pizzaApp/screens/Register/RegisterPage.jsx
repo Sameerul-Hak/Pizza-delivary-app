@@ -20,7 +20,7 @@ const RegisterPage = () => {
         phoneNumber
       })
       
-      // res.data && window.location.replace("/")
+      res.data && window.location.replace("/")
     } catch (error) {
       console.log({error})
   };
@@ -96,7 +96,7 @@ const RegisterPage = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              placeholder="Your name"
+              placeholder="Your name" required
             />
             <label
               htmlFor="email"
@@ -121,7 +121,7 @@ const RegisterPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              placeholder="Your email"
+              placeholder="Your email" required
             />
             <label
               htmlFor="password"
@@ -146,7 +146,7 @@ const RegisterPage = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Your password"
+              placeholder="Your password" required
             />
             <label
               htmlFor="phoneNumber"

@@ -1,14 +1,40 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../../components/UserContext';
+
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const { updateName } = useContext(UserContext);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
+    const response = await fetch('http://localhost:3001/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      const { user } = responseData;
+      console.log("login user data:",user)
+
+      updateName(user.name);
+
+      localStorage.setItem('user', JSON.stringify(user));
+      // Successful login
+      window.location.href = '/home'
+    } else {
+      const errorData = await response.json();
+      console.log('Login error:', errorData.message);
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -146,19 +172,19 @@ const LoginPage = () => {
                   Password
                 </label>
                 <div
-                  className={`password-field ${showPassword ? 'show-pass' : ''}`}
+                  className={`password-field ${showPassword ? 'show-password' : ''}`}
                   style={passwordFieldStyle}
                 >
                   <input
                     style={Object.assign({}, inputStyle, passwordInputStyle)}
                     type={showPassword ? 'text' : 'password'}
-                    value={pass}
-                    onChange={(e) => setPass(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Your password"
                   />
                   <span
                     className="toggle-password"
-                    data-showpass=""
+                    data-showpassword=""
                     onClick={togglePasswordVisibility}
                     style={Object.assign(
                       {},
