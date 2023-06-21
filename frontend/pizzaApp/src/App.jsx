@@ -15,6 +15,7 @@ import EditPizzaForm from '../components/DetailPizza/EditPizza';
 import PizzaDetails from '../screens/PizzaDetails/PizzaDetails';
 import { AdminAuthProvider } from './../components/Admin/AdminAuthContext';
 import PrivateRoutes from './PrivateRoute';
+import Orders from '../components/Admin/orders/Orders';
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/createpizzaadmin" element={<CreatePizza />} />
           <Route path="/edit-pizza/:id" element={<EditPizzaForm />} />
           <Route path="/singlepizza/:id" element={<PizzaDetails />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </AdminAuthProvider>
     </Router>

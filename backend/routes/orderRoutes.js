@@ -3,6 +3,7 @@ const router=express.Router()
 const multer=require('multer')
 const path=require('path')
 const orderModel=require("./../model/orders")
+const { getmyorders, changests } = require("../controller/orderController")
 
 
 
@@ -23,5 +24,10 @@ router.post("/createorder",(req,res)=>{
         sauce:req.body.sauce,
     }).then((result)=>res.json({message:"order saved"})).catch((err)=>console.log(err))
 })
+
+
+router.get("/myorders",getmyorders)
+router.post("/statuschange/:sts/:id",changests);
+
 
 module.exports=router
