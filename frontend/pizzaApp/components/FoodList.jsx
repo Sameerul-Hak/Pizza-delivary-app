@@ -6,8 +6,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 
 function FoodList() {
-  const history=useNavigate();
-
+  const history=useNavigate()
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log(user.name)
   const [foods, setFoods] = useState([]);
   const [message,setmessage]=useState("")
   useEffect(() => {
@@ -93,6 +94,7 @@ function FoodList() {
   const handlePlaceOrderClick = (food) => {
     
     let d={
+      username:user.name,
       name: food.name,
       description: food.description,
       quantity: food.quantity,
@@ -109,7 +111,7 @@ function FoodList() {
    
 
     axios
-      .post("http://localhost:3001/orders/createorder",d)
+      .post(`http://localhost:3001/orders/createorder/${user.name}`,d)
       .then((response) => {
         setmessage(response.data.message);
         history("/menu")

@@ -6,6 +6,7 @@ import pizza from './../../../assets/images/icons8-pizza-50.png';
 
 function Orders() {
   const [orders, setOrders] = useState([]);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     axios
@@ -19,12 +20,9 @@ function Orders() {
 
     // Call your API endpoint with the selected status and order ID
     axios
-      .post(`http://localhost:3001/orders/statuschange/${status}/${orderId}`)
+      .post(`http://localhost:3001/orders/statuschange/${status}/${orderId}/${user.name}`)
       .then((res) => {
-        // Handle the response or update the state as needed
         console.log(res.data);
-
-        // Update the status of the specific order in the state
         setOrders(prevOrders => {
           const updatedOrders = prevOrders.map(order => {
             if (order._id === orderId) {

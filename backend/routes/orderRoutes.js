@@ -8,8 +8,9 @@ const { getmyorders, changests } = require("../controller/orderController")
 
 
 
-router.post("/createorder",(req,res)=>{
+router.post("/createorder/:username",(req,res)=>{
     orderModel.create({
+        username:req.params.username,
         name:req.body.name,
         description:req.body.description,
         image:req.body.image,
@@ -27,7 +28,7 @@ router.post("/createorder",(req,res)=>{
 
 
 router.get("/myorders",getmyorders)
-router.post("/statuschange/:sts/:id",changests);
+router.post("/statuschange/:sts/:id/:username",changests);
 
 
 module.exports=router

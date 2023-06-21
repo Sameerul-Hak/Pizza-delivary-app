@@ -41,6 +41,7 @@ const App = () => {
           <Route path="/cart" element={<Cart />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/singlepizza/:id" element={<PizzaDetails />} />
+          <Route path="/adminorders" element={<Orders />} />
         </Routes>
         </UserProvider>
       </AdminAuthProvider>

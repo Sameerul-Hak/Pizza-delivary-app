@@ -42,7 +42,7 @@ console.log(isadminauth)
             <h3 className='pqh3'>tags: #{pizza.tags}</h3>
             </div>
             <h3 className='des'>{pizza.description}</h3>
-            <a key={pizza._id} href={`/detailpizza/${pizza._id}`} className='view-details'><h2>veiw details</h2></a>            
+            <Link key={pizza._id} to={`/detailpizza/${pizza._id}`} className='view-details'><h2>veiw details</h2></Link>            
           </div>
       ))}</div>
         </div>
