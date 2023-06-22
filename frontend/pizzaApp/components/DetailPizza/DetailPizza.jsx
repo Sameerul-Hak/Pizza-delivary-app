@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { AdminAuthContext } from '../Admin/AdminAuthContext';
 function DetailPizza() {
   const [detailpizza, setDetailPizza] = useState(null);
   const { id } = useParams();
   const history = useNavigate();
+  const { isadminauth } = useContext(AdminAuthContext);
+console.log(isadminauth,"from detail")
   const handleedit=()=>{
     // <Route path="/edit-pizza/:id" component={EditPizzaForm} />
     history(`/edit-pizza/${id}`);
+
   }
   const handledelete=()=>{
     axios
@@ -23,7 +27,7 @@ function DetailPizza() {
       .get(`http://localhost:3001/admin/detailpizzaadmin/${id}`)
       .then((res) => setDetailPizza(res.data))
       .catch((err) => console.log(err));
-  }, [id]);
+  }, []);
 
   if (!detailpizza) {
     return <p>Loading...</p>;

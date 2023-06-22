@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function NavbarComponent() {
   const navbarStyle = {
@@ -52,9 +53,9 @@ function NavbarComponent() {
         <a href="#logout" style={optionLinkStyle}>
           Logout
         </a>
-        <a href="#cart" style={optionLinkStyle}>
+        <Link to="/usercart" style={optionLinkStyle}>
           Cart
-        </a>
+        </Link>
       </div>
     </nav>
   );
