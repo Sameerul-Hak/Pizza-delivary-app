@@ -87,64 +87,126 @@ const PizzaForm = () => {
       <div className="header">
         <h2>Create Pizzas</h2>
       </div>
+      <h2 className="Create_desc"> Create the pizza with Lots of Love and add Flavours and Toppings that feels Tastier</h2>
       <div className="create_pizza">
         <form onSubmit={handleSubmit} className="create_form">
-        <label>
+        <label className="create_label">
           Name:
           <input type="text" name="name" value={pizzaData.name} onChange={handleInputChange} />
         </label>
         <br />
-        <label>
+        <label className="create_label">
           Description:
-          <textarea name="description" value={pizzaData.description} onChange={handleInputChange} />
+          <textarea className="desc" name="description" value={pizzaData.description} onChange={handleInputChange} />
         </label>
         <br />
-        <label>
+        <label className="create_label">
           Quantity:
           <input type="number" name="quantity" value={pizzaData.quantity} onChange={handleInputChange} />
         </label>
         <br />
-        <label>
+        <label className="create_label">
           Tags:
           <input type="text" name="tags" value={pizzaData.tags} onChange={handleInputChange} />
         </label>
         <br />
-        <label>
+        <label className="create_label">
           Price:
           <input type="number" name="price" value={pizzaData.price} onChange={handleInputChange} />
         </label>
         <br />
-        <label>
+        <label className="create_label">
+        Size:
+        <input
+          type="checkbox"
+          name="size"
+          value="small"
+          checked={pizzaData.size === "small"}
+          onChange={handleInputChange}
+        />
+        <span>Small</span>
+
+        <input
+          type="checkbox"
+          name="size"
+          value="medium"
+          checked={pizzaData.size === "medium"}
+          onChange={handleInputChange}
+        />
+        <span>Medium</span>
+
+        <input
+          type="checkbox"
+          name="size"
+          value="large"
+          checked={pizzaData.size === "large"}
+          onChange={handleInputChange}
+        />
+        <span>Large</span>
+      </label>
+
+
+        {/* <label>
           Size:
           <select name="size" value={pizzaData.size} onChange={handleInputChange}>
             <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
           </select>
-        </label>
+        </label> */}
         <br />
-        <label>
+        <label className="create_label">
           Toppings:
           <input type="text" name="toppings" value={pizzaData.toppings} onChange={handleInputChange} />
         </label>
         <br />
-        <label>
+        <label className="create_label">
           Discount:
           <input type="text" name="discount" value={pizzaData.discount} onChange={handleInputChange} />
         </label>
         <br />
-        <label>
+
+        <label className="create_label">
+        Type of Pizza:
+        <input
+          type="checkbox"
+          name="type"
+          value="Veg"
+          checked={pizzaData.type === "Veg"}
+          onChange={handleInputChange}
+        />
+        <span>Veg</span>
+
+        <input
+          type="checkbox"
+          name="type"
+          value="Non-veg"
+          checked={pizzaData.type === "Non-veg"}
+          onChange={handleInputChange}
+        />
+        <span>Non-Veg</span>
+
+        <input
+          type="checkbox"
+          name="type"
+          value="cheese"
+          checked={pizzaData.type === "cheese"}
+          onChange={handleInputChange}
+        />
+        <span>Cheese</span>
+      </label>
+        {/* <label>
           Type of Pizza:
-          <select name="typeofpizza" value={pizzaData.typeofpizza} onChange={handleInputChange}>
+          <select name="typeofpizza" value={pizzaData.typeofpizza} onChange={handleInputChange} >
             <option value="veg">Veg</option>
             <option value="non-veg">Non-Veg</option>
             <option value="cheese">Cheese</option>
           </select>
-        </label>
+        </label> */}
         <br />
-        <label>
-          Base:
-          <select name="base" value={pizzaData.base} onChange={handleInputChange}>
+        <label className="create_label">
+          Crust:
+          <select name="base" value={pizzaData.base} onChange={handleInputChange} className="drop-down">
             <option value="thin crust">Thin Crust</option>
             <option value="thick crust">Thick Crust</option>
             <option value="deep dish">Deep Dish</option>
@@ -153,9 +215,9 @@ const PizzaForm = () => {
           </select>
         </label>
         <br />
-        <label>
+        <label className="create_label">
           Sauce:
-          <select name="sauce" value={pizzaData.sauce} onChange={handleInputChange}>
+          <select name="sauce" value={pizzaData.sauce} onChange={handleInputChange}className="drop-down">
             <option value="marinara">Marinara</option>
             <option value="barbecue">Barbecue</option>
             <option value="alfredo">Alfredo</option>
@@ -164,7 +226,7 @@ const PizzaForm = () => {
           </select>
         </label>
         <br />
-        <label>
+        <label className="create_label">
           Image:
           <input type="file" onChange={handleFileChange} />
         </label>

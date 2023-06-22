@@ -1,11 +1,21 @@
 .body-createpizza{
     /* background-color:aliceblue; */
-    background-image: url(./../../../assets/images/entrybg.jpeg);
-    
-    
+    width:100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-attachment: fixed;
+    background-image: url("./../../../assets/slider2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    padding-top: 4%;
+    padding-bottom: 4%;   
 }
 
-.create_form{
+/* .create_form{
     width:340px;
     height:600px;
     background:#e6e6e6;
@@ -18,6 +28,7 @@
     font-family:'Montserrat',sans-serif;
     position:relative
 }
+
 .header{
     margin:10px 0;
     padding-bottom:10px;
@@ -44,7 +55,7 @@ input{
 }
 input:focus{
     border-bottom:2px solid #78788c;
-}
+} */
 /* p:before{
     content:attr(type);
     display:block;
@@ -52,7 +63,7 @@ input:focus{
     font-size:14px;
     color:#5a5a5a;
 } */
-button{
+/* button{
     padding:8px 12px;
     margin:8px 0 0;
     font-family:'Montserrat',sans-serif;
@@ -64,9 +75,77 @@ button{
 button:hover{
     background:#78788c;
     color:#fff;
-}
+} */
 /* div{content:'Hi';
     position:absolute;
     bottom:-15px;
     right:-20px;background:#50505a;color:#fff;width:320px;padding:16px 4px 16px 0;border-radius:6px;font-size:13px;box-shadow:10px 10px 40px -14px #000} */
 /* span{margin:0 5px 0 15px} */
+
+
+.header{
+    color: rgb(5, 172, 5);
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 8px;
+}
+
+.create_container{
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-bottom: 20px;
+    padding-left: 6%;
+}
+.Create_desc{
+    text-align: center;
+    margin:0 0 8px;
+    font-size: 32px;
+}
+
+input{
+    font-size: 25px;
+    margin: 0 0 16px;
+    padding: 6px 28px 6px 12px;
+    letter-spacing: 3px;
+}
+.create_form{
+    color: #fff;
+    font-size: 16px;
+    /* padding: 0 15px; */
+    
+}
+.drop-down{
+    font-size: 25px;
+    margin: 0 0 16px;
+    padding: 6px 28px 6px 12px;
+    letter-spacing: 3px;
+}
+.desc{
+    font-size: 25px;
+    margin: 0 0 16px;
+    padding: 6px 28px 6px 12px;
+    letter-spacing: 3px;
+}
+.create_label{
+        color: #fff;
+        font-size:16px;
+        margin: 0 0 8px;
+        
+}
+
+.Create_btn{
+    border-radius: 10px;
+    margin: 6px;
+    padding:6px 12px;
+    color:#212529;
+    background: #f57c00;
+    cursor: pointer;
+    border: 2px solid;
+}
+
+
+
