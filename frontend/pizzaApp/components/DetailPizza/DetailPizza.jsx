@@ -41,30 +41,28 @@ console.log(isadminauth,"from detail")
     <div className='detail_card'>
       <div className="detail_card_container">
         <div className="card_img">
-          {/* <link className='nav-to'to='/admin' ><FontAwesomeIcon icon={faTimes} /></link> */}
-          <h2>Pizza Details</h2>
           <img src={`http://localhost:3001/images/${detailpizza.image}`} alt={detailpizza.name} /> 
         </div>
         <div className="card_content">
           <div className="card_pizza_name">
-            <h3>{detailpizza.name}</h3>
+            <h3><span style={{color:"red"}}>{detailpizza.name}</span></h3>
           </div>
           <div className="card_details">
             <p>{detailpizza.description}</p>
-            <p>Price: ${detailpizza.price}</p>
-            <p>Quantity: {detailpizza.quantity}</p>
-            <p>Base: {detailpizza.base}</p>
-            <p>Sauce: {detailpizza.sauce}</p>
-            <p>Size: {detailpizza.size}</p>
-            <p>Toppings: {detailpizza.toppings}</p>
-            <p>Type of Pizza: {detailpizza.typeofpizza}</p>
-            <p>Tags: {detailpizza.tags}</p>
-            <p>Discount: {detailpizza.discount}</p>
-            <p>status: {detailpizza.status}</p>
+            <p>Price: <span style={{color:"red"}}>${detailpizza.price}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.quantity}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.base}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.sauce}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.size}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.toppings}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.typeofpizza}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.tags}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.discount}</span></p>
+            <p>Price: <span style={{color:"red"}}>{detailpizza.status}</span></p>
           </div>
           <div className="detail_footer">
-            <button onClick={handleedit}>edit</button>
-            <button onClick={handledelete}>delete</button>
+            <button onClick={handleedit} className='edit-btn'>edit</button>
+            <button onClick={handledelete}className='del-btn'>delete</button>
           </div>
         </div>
       </div>
@@ -73,3 +71,5 @@ console.log(isadminauth,"from detail")
 }
 
 export default DetailPizza;
+{/*  */}
+{/*  */}
