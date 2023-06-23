@@ -1,64 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./navbar.css";
 
-function NavbarComponent() {
-  const navbarStyle = {
-    // backgroundColor: '#f8f9fa',
-    color:"white",
-    padding: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  };
-
-  const logoStyle = {
-    color:"white",
-    display: 'flex',
-    alignItems: 'center',
-    textDecoration: 'none',
-    fontWeight: 'bold',
-  };
-
-  const optionsStyle = {
-    display: 'flex',
-    color:"white",
-    alignItems: 'center',
-  };
-
-  const optionLinkStyle = {
-    marginLeft: '10px',
-    color:"white",
-    textDecoration: 'none',
-    fontWeight: 'bold',
-  };
-
+const Navbar = () => {
   return (
-    <nav style={navbarStyle}>
-      <a href="/" style={logoStyle}>
-        <img
-          src="../../assets/images/entrybg.jpeg" // Replace with the path to your brand logo
-          alt="Brand Logo"
-          width="30"
-          height="30"
-        />
-        <span color='white'>My Website</span>
-      </a>
-      <div style={optionsStyle}>
-        <a href="#my-account" style={optionLinkStyle}>
-          My Account
-        </a>
-        <a href="#pizzas" style={optionLinkStyle}>
-          Pizzas
-        </a>
-        <a href="#logout" style={optionLinkStyle}>
-          Logout
-        </a>
-        <Link to="/usercart" style={optionLinkStyle}>
-          Cart
+    <div>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <section className="top-nav">
+      <div>
+      <Link to="/" style={{ textDecoration: "none" }}>
+          <img
+            src="../../assets/images/img/logo.png" // Replace with the path to your brand logo
+            alt="Brand Logo"
+            width="28"
+            height="28"
+          />
+          <span className="navbar_logoname" style={{ color: 'orange', marginLeft:'7px' }}>Pizoo</span>
         </Link>
       </div>
-    </nav>
+      <input id="menu-item-toggle" type="checkbox" />
+      <label className="menu-item-button-container" htmlFor="menu-item-toggle">
+        <div className="menu-item-button" />
+      </label>
+      <ul className="menu-item">
+          <li>
+            <a href="#my-account">
+              My Account
+            </a>
+          </li>
+          <li>
+            <a href="#pizzas">
+              Pizzas
+            </a>
+          </li>
+          <li>
+            <a href="#logout">
+              Logout
+            </a>
+          </li>
+          <li>
+            <Link to="/usercart">
+              Cart
+            </Link>
+          </li>
+        </ul>
+    </section>
+  </div>
   );
 }
 
-export default NavbarComponent;
+export default Navbar;
