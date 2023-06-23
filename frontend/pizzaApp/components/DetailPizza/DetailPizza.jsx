@@ -50,15 +50,15 @@ console.log(isadminauth,"from detail")
           <div className="card_details">
             <p>{detailpizza.description}</p>
             <p>Price: <span style={{color:"red"}}>${detailpizza.price}</span></p>
-            <p>Price: <span style={{color:"red"}}>{detailpizza.quantity}</span></p>
-            <p>Price: <span style={{color:"red"}}>{detailpizza.base}</span></p>
-            <p>Price: <span style={{color:"red"}}>{detailpizza.sauce}</span></p>
-            <p>Price: <span style={{color:"red"}}>{detailpizza.size}</span></p>
+            <p>Quantity: <span style={{color:"red"}}>{detailpizza.quantity}</span></p>
+            <p>Base:<span style={{color:"red"}}>{detailpizza.base}</span></p>
+            <p>Sauce: <span style={{color:"red"}}>{detailpizza.sauce}</span></p>
+            <p>Size <span style={{color:"red"}}>{detailpizza.size}</span></p>
             <p>Price: <span style={{color:"red"}}>{detailpizza.toppings}</span></p>
-            <p>Price: <span style={{color:"red"}}>{detailpizza.typeofpizza}</span></p>
-            <p>Price: <span style={{color:"red"}}>{detailpizza.tags}</span></p>
+            <p>Type of pizza: <span style={{color:"red"}}>{detailpizza.typeofpizza}</span></p>
+            <p>Tags <span style={{color:"red"}}>{detailpizza.tags}</span></p>
             <p>Price: <span style={{color:"red"}}>{detailpizza.discount}</span></p>
-            <p>Price: <span style={{color:"red"}}>{detailpizza.status}</span></p>
+            <p>Status: <span style={{color:"red"}}>{detailpizza.status}</span></p>
           </div>
           <div className="detail_footer">
             <button onClick={handleedit} className='edit-btn'>edit</button>
