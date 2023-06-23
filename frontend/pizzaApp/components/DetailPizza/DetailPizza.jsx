@@ -41,7 +41,7 @@ console.log(isadminauth,"from detail")
     <div className='detail_card'>
       <div className="detail_card_container">
         <div className="card_img">
-          <span className="detail_close"><FontAwesomeIcon icon={faTimes} /></span>
+          <link className='nav-to'to='/admin' ><FontAwesomeIcon icon={faTimes} /></link>
           <h2>Pizza Details</h2>
           <img src={`http://localhost:3001/images/${detailpizza.image}`} alt={detailpizza.name} /> 
         </div>
