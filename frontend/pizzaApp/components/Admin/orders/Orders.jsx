@@ -15,14 +15,14 @@ function Orders() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleStatusChange = (event, orderId) => {
+  const handleStatusChange = (event, orderId,ordname) => {
     const status = event.target.value;
 
     // Call your API endpoint with the selected status and order ID
     axios
-      .post(`http://localhost:3001/orders/statuschange/${status}/${orderId}/${user.name}`)
+      .post(`http://localhost:3001/orders/statuschange/${status}/${orderId}/${ordname}`)
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.message);
         setOrders(prevOrders => {
           const updatedOrders = prevOrders.map(order => {
             if (order._id === orderId) {
@@ -85,7 +85,7 @@ function Orders() {
               <select
                 id="status"
                 value={ord.status}
-                onChange={(event) => handleStatusChange(event, ord._id)}
+                onChange={(event) => handleStatusChange(event, ord._id,ord.username)}
               >
                 <option value="">{ord.status}</option>
                 <option value="accepted">Accepted</option>
