@@ -74,10 +74,11 @@ function HomePage() {
     color: 'Red',
     textTransform: 'uppercase',
     marginBottom: '5rem',
-    padding: '1.5rem 1rem',
+    padding: '1rem',
     border: 'none',
     borderRadius: '10px',
     fontWeight: 'bold',
+    
   };
 
   const containerStyle2 = {

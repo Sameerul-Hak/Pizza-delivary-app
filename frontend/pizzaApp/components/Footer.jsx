@@ -6,19 +6,20 @@ function Footer() {
     <section className="footerbody">
     <footer className="footer">
       <div className="footerbox">
-        <h2>Links</h2>
-        <ul class="footerlinks">
-          <li><a href="/">Home</a></li>
-          <li><a href="#aboutus">About Us</a></li>
-          <li><a href="#contactus">Contact Us</a></li>
-          </ul>
-          </div>
+        <h2 id="links">Links</h2>
+       
+          <a className='atag' href="/">Home</a>
+          <a className='atag' href="#aboutus">About Us</a>
+          <a className='atag' href="#contactus">Contact Us</a>
+        
+      </div>
         <div className="footerbox">
           <h2>News Letter</h2>
           <form action="" className='footerregistration'>
             <input type="email" name='email' id='email' placeholder='Enter your email ID'/>
             <button id='footerbutton' type='submit'>Subscibe Now</button>
           </form>
+          <div><h3 id="copyrights">@copyrights vinaysaren</h3></div>
         </div>
         <div className="footerbox">
           <h2>Contact</h2>
@@ -31,6 +32,7 @@ function Footer() {
           </ul>
           </div>
     </footer>
+          
     </section>
 );
 }
