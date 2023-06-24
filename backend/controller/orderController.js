@@ -96,4 +96,20 @@ exports.changests = (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
       });
   };
+  exports.admindeleteorder = (req, res) => {
+    const { id} = req.params;
+;
+    orderModel
+      .deleteOne({ _id: id })
+      .then((result) => {
+        if (result.deletedCount === 0) {
+          return res.status(404).json({ message: "Order not found" });
+        }
+        res.json({ message: "Order cleared successfully" });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: "Something went wrong" });
+      });
+  };
   

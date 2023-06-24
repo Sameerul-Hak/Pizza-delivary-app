@@ -121,7 +121,24 @@ align-items: center;
     position: relative;
     top: 50%;
 }
-
+.btn-order{
+    background-color:rgb(250, 92, 92);
+    position: relative;
+    bottom: -10%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border:none;
+}
+.btn-order:hover{
+    opacity: 0.7;
+}
 
 @media only screen and (max-width: 1200px){
 .admin-contianer{

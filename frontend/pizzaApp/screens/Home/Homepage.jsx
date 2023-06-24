@@ -5,12 +5,12 @@ import Hero from '../../components/Hero';
 import howToWork1 from '../../assets/images/how-to-work1.png';
 import howToWork2 from '../../assets/images/how-to-work2.png';
 import howToWork3 from '../../assets/images/how-to-work3.png';
-
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 
 
 function HomePage() {
-
+  const history=useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
   console.log("Home user:",user);
   const name = user.name;
@@ -92,7 +92,7 @@ function HomePage() {
   }
 
   const handleOrderNowBtn = () => {
-    // Handle the "Order Now" button click event
+    history("/menu")
   };
 
   return (
