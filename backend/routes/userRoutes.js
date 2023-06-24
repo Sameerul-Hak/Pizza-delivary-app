@@ -1,7 +1,7 @@
 
 const userController=require("./../controller/usersController")
 const { detailpizzauser} = require("../controller/adminController")
-
+const CustomizedPizza = require('../model/custompizza');
 
 const express = require('express');
 const router = express.Router();
@@ -26,6 +26,25 @@ router.get('/detailpizzauser/:id', async (req, res) => {
       console.error("error");
       res.status(500).send('Server Error');
     }
+});
+
+router.post('/custompizza', async (req, res) => {
+  try {
+    const { base, sauce, cheese, veggies } = req.body;
+
+    const customizedPizza = new CustomizedPizza({
+      base,
+      sauce,
+      cheese,
+      veggies,
+    });
+
+    const savedPizza = await customizedPizza.save();
+
+    res.status(201).json(savedPizza);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred while saving the pizza.' });
+  }
 });
 
 module.exports = router;

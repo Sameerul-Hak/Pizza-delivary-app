@@ -1,6 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Josefin+Sans:ital,wght@0,100;0,200;0,400;0,500;1,100;1,200;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400;1,500;1,600;1,700&family=Poppins:wght@400;500;600;700&family=Titan+One&family=Varela&family=Varela+Round&display=swap');
 
+:root{
+  --color-primary:#6c63ff;
+  --color-success: #00bf8e;
+  --color-warning:#f7c94b;
+  --color-danger:#f75842;
 
+  --color-danger-variant:rgba(247,88,66,0.4);
+  --color-white:#fff;
+  --color-light:rgba(255,255,255,0.7);
+  --color-black:#000;
+  --color-bg:#1f2641;
+  --color-bg1:#2e3267;
+  --color-bg2:#424890;
+
+
+  --container-width-lg:80%;
+  --container-width-md: 90%;
+  --container-width-sm: 94%;
+
+
+  --transition:all 400ms ease;
+
+
+}
 #home_title{
   font-family: Titan One,Cursive;
   color: hsl(36, 100%, 96%);
@@ -34,7 +57,11 @@
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
+
     /* text-shadow: 2px 2px 4px rgba(0,0,0.5); */
+
+    text-shadow: 2px 2px 4px rgba(0 ,0 ,0 ,0.5);
+
     /* // fontFamily:Titan One;cursive;
     // stroke: '#401c10'; */
   }
@@ -61,4 +88,50 @@
     margin-right: auto;
     margin-left: auto;
   } */
-  
+
+.home_varieties{
+  background:var(--color-bg1);
+  box-shadow: inset 0 0 3rem rgba(0 ,0 ,0 ,0.5);
+  padding: 6rem 0;
+}
+.home_varieties h2{
+  color: rgb(5,172,5);
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+.home_varieties_container{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2rem;
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+.home_variety{
+  background: var(--color-bg2);
+  padding: 2rem;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  /* height:max-content; */
+  /* width: auto; */
+
+}
+.home_variety:hover{
+  background: transparent;
+  border-color: var(--color-primary);
+}
+.home_variety-img{
+  /* filter: saturate(0); */
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+.home_variety-info{
+  text-align: center;
+  margin-top: 1.4rem;
+  color: rgb(5,172,5);
+}

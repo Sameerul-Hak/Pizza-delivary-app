@@ -26,94 +26,60 @@ function Hero() {
         <span className='spanStyle'>bla bla bla</span>
         <span className='spanStyle'>bla bla bla</span> */}
     </div>
-    <div
-      className="container carousel slide carousel-multi-item"
-      data-ride="carousel"
-      id="variety"
-    >
-      <div className="controls-top ">
-        <h2>Our Varieties</h2>
+    <section className="home_varieties">
+      <h2>Our Varieties</h2>
+      <div className="home_varieties_container">
+        <article className="home_variety">
+          <div className="home_variety-img">
+            <img src="../../assets/images/img/pizza1.jpg" alt="cardimg" />
+          </div>
+          <div className="home_variety-info">
+            <h4>Chicken Tikka</h4>
+          </div>
+        </article>
+        <article className="home_variety">
+          <div className="home_variety-img">
+            <img src="../../assets/images/img/pizza2.jpg" alt="cardimg" />
+          </div>
+          <div className="home_variety-info">
+            <h4>PeriPeri Pizza</h4>
+          </div>
+        </article>
+        <article className="home_variety">
+          <div className="home_variety-img">
+            <img src="../../assets/images/img/pizza3.jpg" alt="cardimg" />
+          </div>
+          <div className="home_variety-info">
+            <h4>Raspberry Dessert Pizza</h4>
+          </div>
+        </article>
+        <article className="home_variety">
+          <div className="home_variety-img">
+            <img src="../../assets/images/img/pizza4.jpg" alt="cardimg" />
+          </div>
+          <div className="home_variety-info">
+            <h4>Chicken Alfredo Pizza</h4>
+          </div>
+        </article>
+        <article className="home_variety">
+          <div className="home_variety-img">
+            <img src="../../assets/images/img/pizza5.jpg" alt="cardimg" />
+          </div>
+          <div className="home_variety-info">
+            <h4>Sunchoke Pizza</h4>
+          </div>
+        </article>
+        <article className="home_variety">
+          <div className="home_variety-img">
+            <img src="../../assets/images/img/pizza6.jpg" alt="cardimg" />
+          </div>
+          <div className="home_variety-info">
+            <h4>Buffalo Chicken Sticks</h4>
+          </div>
+        </article>
       </div>
-      <div className="carousel-inner" role="listbox">
-        <div className="carousel-item active">
-          <div className="col-md-4">
-            <div className="card mb-2">
-              <img
-                className="card-img-top"
-                src="../../assets/images/img/pizza1.jpg"
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Chicken Tikka</h5>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card mb-2">
-              <img
-                className="card-img-top"
-                src="../../assets/images/img/pizza2.jpg"
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title">PeriPeri Pizza</h5>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card mb-2">
-              <img
-                className="card-img-top"
-                src="../../assets/images/img/pizza3.jpg"
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Raspberry Dessert Pizza</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="carousel-item">
-          <div className="col-md-4">
-            <div className="card mb-2">
-              <img
-                className="card-img-top"
-                src="../../assets/images/img/pizza4.jpg"
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Chicken Alfredo Pizza</h5>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card mb-2">
-              <img
-                className="card-img-top"
-                src="../../assets/images/img/pizza5.jpg"
-                alt="Card image cap"
-              />
-              <div className="card-body">
-                <h5 className="card-title">Sunchoke Pizza</h5>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card mb-2">
-              <img
-                className="card-img-top"
-                src="../../assets/images/img/pizza6.jpg"
-                alt="Card image cap"
-              />
-          <div className="card-body">
-            <h5 className="card-title"> Buffalo Chicken Sticks</h5>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+    </section>
+    
     </>
   );
 }
