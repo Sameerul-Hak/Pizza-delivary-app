@@ -19,9 +19,11 @@
 
 *{
     margin:0;
+    /* overflow: hidden; */
   } 
   
   .form-container {
+    overflow: hidden;
     display: grid;
     place-items: center;
     width: 100vw;

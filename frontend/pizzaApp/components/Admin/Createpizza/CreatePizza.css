@@ -13,7 +13,7 @@
     color: white;
     padding-top: 4%;
     padding-bottom: 4%;  
-    /* overflow-x: hidden;  */
+    overflow: hidden; 
 }
 
 /* .create_form{
