@@ -106,7 +106,9 @@ function Cartuser() {
               <button onClick={() => handleRemove(ord)} style={removeButtonStyle}>
                 Remove
               </button>
-              </div>:<h1>wait for your order to deliver</h1>}
+              </div>:<button onClick={() => handleRemove(ord)} style={removeButtonStyle}>
+                Cancel Order
+              </button>}
             </div>
             </div>
             

@@ -31,7 +31,7 @@ function Hero() {
       <div className="home_varieties_container">
         <article className="home_variety">
           <div className="home_variety-img">
-            <img src="../../assets/images/img/pizza1.jpg" alt="cardimg" />
+            <img id='imgid' src="../../assets/images/img/pizza1.jpg" alt="cardimg" />
           </div>
           <div className="home_variety-info">
             <h4>Chicken Tikka</h4>
@@ -39,7 +39,7 @@ function Hero() {
         </article>
         <article className="home_variety">
           <div className="home_variety-img">
-            <img src="../../assets/images/img/pizza2.jpg" alt="cardimg" />
+            <img id='imgid' src="../../assets/images/img/pizza2.jpg" alt="cardimg" />
           </div>
           <div className="home_variety-info">
             <h4>PeriPeri Pizza</h4>
@@ -47,7 +47,7 @@ function Hero() {
         </article>
         <article className="home_variety">
           <div className="home_variety-img">
-            <img src="../../assets/images/img/pizza3.jpg" alt="cardimg" />
+            <img id='imgid' src="../../assets/images/img/pizza3.jpg" alt="cardimg" />
           </div>
           <div className="home_variety-info">
             <h4>Raspberry Dessert Pizza</h4>
@@ -55,7 +55,7 @@ function Hero() {
         </article>
         <article className="home_variety">
           <div className="home_variety-img">
-            <img src="../../assets/images/img/pizza4.jpg" alt="cardimg" />
+            <img id='imgid' src="../../assets/images/img/pizza4.jpg" alt="cardimg" />
           </div>
           <div className="home_variety-info">
             <h4>Chicken Alfredo Pizza</h4>
@@ -63,7 +63,7 @@ function Hero() {
         </article>
         <article className="home_variety">
           <div className="home_variety-img">
-            <img src="../../assets/images/img/pizza5.jpg" alt="cardimg" />
+            <img id='imgid' src="../../assets/images/img/pizza5.jpg" alt="cardimg" />
           </div>
           <div className="home_variety-info">
             <h4>Sunchoke Pizza</h4>
@@ -71,7 +71,7 @@ function Hero() {
         </article>
         <article className="home_variety">
           <div className="home_variety-img">
-            <img src="../../assets/images/img/pizza6.jpg" alt="cardimg" />
+            <img id='imgid' src="../../assets/images/img/pizza6.jpg" alt="cardimg" />
           </div>
           <div className="home_variety-info">
             <h4>Buffalo Chicken Sticks</h4>
