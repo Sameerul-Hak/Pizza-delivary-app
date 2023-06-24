@@ -1,0 +1,31 @@
+.bannerStyle{
+    background-image: url(../assets/images/banner2.jpeg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    /* // display: 'flex';
+    // alignItems: center;
+    // justifyContent: 'center'; */
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0;0;0;0.5);
+    /* // fontFamily:Titan One;cursive;
+    // stroke: '#401c10'; */
+  }
+
+.bannerbottom{
+    height:60px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background-color:red;
+
+  }
+
+.spanStyle{
+    margin:80px;
+    font-family:Sans-serif;
+    font-size:20px;
+  }
