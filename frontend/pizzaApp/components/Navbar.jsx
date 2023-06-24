@@ -15,7 +15,7 @@ const Navbar = () => {
             width="28"
             height="28"
           />
-          <span className="navbar_logoname" style={{ color: 'orange', marginLeft:'7px' }}>Pizoo</span>
+          <span className="navbar_logoname" style={{ color: 'orange', marginLeft:'7px' }}>Pizza Delight</span>
         </Link>
       </div>
       <input id="menu-item-toggle" type="checkbox" />

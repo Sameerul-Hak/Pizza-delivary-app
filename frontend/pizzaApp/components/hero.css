@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Josefin+Sans:ital,wght@0,100;0,200;0,400;0,500;1,100;1,200;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400;1,500;1,600;1,700&family=Poppins:wght@400;500;600;700&family=Titan+One&family=Varela&family=Varela+Round&display=swap');
+
+
+#home_title{
+  font-family: Titan One,Cursive;
+  color: hsl(36, 100%, 96%);
+  stroke-width: 2px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #401c10;
+  stroke: #401c10;
+  text-shadow: 6px 6px 0px #9f7060;
+
+}
+.home_ban_text{
+  font-family: Titan One,Cursive;
+  color: hsl(36, 100%, 96%);
+  stroke-width: 2px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #401c10;
+  stroke: #401c10;
+  text-shadow: 6px 6px 0px #9f7060;
+
+}
+
 .bannerStyle{
     background-image: url(../assets/images/banner2.jpeg);
     background-size: cover;
@@ -6,11 +30,11 @@
     /* // display: 'flex';
     // alignItems: center;
     // justifyContent: 'center'; */
-    color: #fff;
+    /* color: #fff; */
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0;0;0;0.5);
+    /* text-shadow: 2px 2px 4px rgba(0,0,0.5); */
     /* // fontFamily:Titan One;cursive;
     // stroke: '#401c10'; */
   }
@@ -29,3 +53,12 @@
     font-family:Sans-serif;
     font-size:20px;
   }
+
+  /* .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  } */
+  
