@@ -93,7 +93,7 @@ const PizzaForm = () => {
         <label className="create_label">
           Name:
           <br/>
-          <input type="text" name="name" value={pizzaData.name} onChange={handleInputChange} />
+          <input id="create_input_field" type="text" name="name" value={pizzaData.name} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
@@ -105,25 +105,26 @@ const PizzaForm = () => {
         <label className="create_label">
           Quantity:
           <br/>
-          <input type="number" name="quantity" value={pizzaData.quantity} onChange={handleInputChange} />
+          <input type="number"  id="create_input_field" name="quantity" value={pizzaData.quantity} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
           Tags:
           <br/>
-          <input type="text" name="tags" value={pizzaData.tags} onChange={handleInputChange} />
+          <input type="text" id="create_input_field" name="tags" value={pizzaData.tags} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
           Price:
           <br/>
-          <input type="number" name="price" value={pizzaData.price} onChange={handleInputChange} />
+          <input type="number" id="create_input_field" name="price" value={pizzaData.price} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
         Size:
           <br/>
         <input
+          id="create_input_field"
           type="checkbox"
           name="size"
           value="small"
@@ -134,6 +135,7 @@ const PizzaForm = () => {
           <br/>
 
         <input
+          id="create_input_field"
           type="checkbox"
           name="size"
           value="medium"
@@ -143,6 +145,7 @@ const PizzaForm = () => {
         <span>Medium</span>
 
         <input
+          id="create_input_field"
           type="checkbox"
           name="size"
           value="large"
@@ -165,13 +168,13 @@ const PizzaForm = () => {
         <label className="create_label">
           Toppings:
           <br />
-          <input type="text" name="toppings" value={pizzaData.toppings} onChange={handleInputChange} />
+          <input type="text" id="create_input_field" name="toppings" value={pizzaData.toppings} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
           Discount:
           <br />
-          <input type="text" name="discount" value={pizzaData.discount} onChange={handleInputChange} />
+          <input type="text" id="create_input_field" name="discount" value={pizzaData.discount} onChange={handleInputChange} />
         </label>
         <br />
 
@@ -179,6 +182,7 @@ const PizzaForm = () => {
         Type of Pizza:
         <br />
         <input
+          id="create_input_field"
           type="checkbox"
           name="type"
           value="Veg"
@@ -188,6 +192,7 @@ const PizzaForm = () => {
         <span>Veg</span>
 
         <input
+          id="create_input_field"
           type="checkbox"
           name="type"
           value="Non-veg"
@@ -197,6 +202,7 @@ const PizzaForm = () => {
         <span>Non-Veg</span>
 
         <input
+          id="create_input_field"
           type="checkbox"
           name="type"
           value="cheese"
@@ -241,10 +247,10 @@ const PizzaForm = () => {
         <label className="create_label">
           Image:
           <br />
-          <input type="file" onChange={handleFileChange} />
+          <input type="file" id="create_input_field" onChange={handleFileChange} />
         </label>
         <br />
-        <button type="submit" className="Create_btn">Submit</button>
+        <button type="submit"  id="create_input_field" className="Create_btn">Submit</button>
       </form>
       </div>
     </div>

@@ -108,7 +108,7 @@ button:hover{
     font-size: 32px;
 }
 
-input{
+#create_input_field{
     font-size: 25px;
     margin: 0 0 16px;
     padding: 6px 28px 6px 12px;
