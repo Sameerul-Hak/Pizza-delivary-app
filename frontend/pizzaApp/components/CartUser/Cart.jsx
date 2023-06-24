@@ -6,6 +6,7 @@ function Cartuser() {
   const history = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
   const [myorders, setMyOrders] = useState([]);
+  const [message, setmessage] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
   console.log(myorders)
   useEffect(() => {
@@ -28,12 +29,15 @@ function Cartuser() {
 
   const handleRemove = (ord) => {
     axios
-      .post(`http://localhost:3001/orders/removeorder/${ord._id}`)
+      .post(`http://localhost:3001/orders/clearorder/${ord._id}/${user.name}`)
       .then((res) => {
         const updatedOrders = myorders.filter((order) => order._id !== ord._id);
         setMyOrders(updatedOrders);
         calculateTotalAmount(updatedOrders);
-        console.log(res.data.message);
+        setmessage(res.data.message);
+        setTimeout(() => {
+          setmessage("");
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -63,6 +67,7 @@ function Cartuser() {
 
   return (
     <div style={cartContainerStyle}>
+      {message && <h1>{message}</h1>}
       <h1 style={pageTitleStyle}>Your Cart</h1>
 
       {myorders.length !== 0 ? (
@@ -94,10 +99,17 @@ function Cartuser() {
                   +
                 </button>
               </div>
+              
+              <h2 style={{margin:"10px"}}>{ord.status}</h2>
+              <div>
+              {ord.status=="delivered" || ord.status=="cancelled" ?<div>
               <button onClick={() => handleRemove(ord)} style={removeButtonStyle}>
                 Remove
               </button>
+              </div>:<h1>wait for your order to deliver</h1>}
             </div>
+            </div>
+            
           </div>
         ))
       ) : (
@@ -106,7 +118,7 @@ function Cartuser() {
           <h1>Your cart is empty. Go to the menu and place an order.</h1>
         </div>
       )}
-
+      
       {myorders.length !== 0 && (
         <div style={proceedToPayContainerStyle}>
           <h2 style={totalAmountText}>Total Amount: ${totalAmount}</h2>

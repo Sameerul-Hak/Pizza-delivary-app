@@ -7,6 +7,7 @@ import pizza from './../../../assets/images/icons8-pizza-50.png';
 function Orders() {
   const [orders, setOrders] = useState([]);
   const user = JSON.parse(localStorage.getItem('user'));
+  const [message, setmessage] = useState("");
 
   useEffect(() => {
     axios
@@ -36,6 +37,23 @@ function Orders() {
       .catch((err) => console.log(err));
   };
 
+  const handleRemove = (ord) => {
+    axios
+      .post(`http://localhost:3001/orders/clearorder/${ord._id}`)
+      .then((res) => {
+        
+        setmessage(res.data.message);
+        setTimeout(() => {
+          setmessage("");
+        }, 3000);
+        window.location.reload();
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="body-admin">
       <nav className="nav-admin">
@@ -46,6 +64,7 @@ function Orders() {
           Create Pizza
         </Link>
       </nav>
+      {message && <h1>{message}</h1>}
       <div className="admin-contianer">
         {orders.map((ord) => (
           <div key={ord._id} className="pizza-block">
@@ -93,6 +112,9 @@ function Orders() {
                 <option value="cancelled">Cancelled</option>
               </select>
             </div>
+              <button onClick={() => handleRemove(ord)} className='btn-order' >
+                Remove
+              </button>
           </div>
         ))}
       </div>

@@ -3,7 +3,7 @@ const router=express.Router()
 const multer=require('multer')
 const path=require('path')
 const orderModel=require("./../model/orders")
-const { getmyorders, changests, getusercarts, deleteorder } = require("../controller/orderController")
+const { getmyorders, changests, getusercarts, deleteorder, admindeleteorder } = require("../controller/orderController")
 
 
 
@@ -60,5 +60,6 @@ router.get("/myorders",getmyorders)
 router.post("/statuschange/:sts/:id/:username",changests);
 router.get("/userorders/:username",getusercarts)
 router.post("/clearorder/:id/:username",deleteorder)
+router.post("/clearorder/:id/",admindeleteorder)
 
 module.exports=router
