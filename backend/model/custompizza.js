@@ -17,6 +17,10 @@ const customizedPizzaSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  user : {
+    type: mongoose.Types.ObjectId, 
+    ref:'User'
+  }
 });
 
 const CustomizedPizza = mongoose.model('CustomizedPizza', customizedPizzaSchema);

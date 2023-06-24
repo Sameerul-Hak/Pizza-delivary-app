@@ -7,6 +7,9 @@ const CustomPizzaPage = () => {
   const [selectedCheese, setSelectedCheese] = useState('');
   const [selectedVeggies, setSelectedVeggies] = useState([]);
 
+  const user = JSON.parse(localStorage.getItem('user'));
+  const User = user._id;
+
   const baseOptions = ['Thin Crust', 'Thick Crust', 'Whole Wheat', 'Gluten-Free', 'Cauliflower Crust'];
   const sauceOptions = ['Marinara', 'Alfredo', 'Pesto', 'BBQ', 'Garlic Butter'];
   const cheeseOptions = ['Mozzarella', 'Cheddar', 'Parmesan', 'Gouda', 'Feta'];
@@ -59,6 +62,7 @@ const CustomPizzaPage = () => {
       sauce: selectedSauce,
       cheese: selectedCheese,
       veggies: selectedVeggies,
+      user:User
     };
     console.log('Pizza ordered!',customizedPizza);
     axios
@@ -69,8 +73,14 @@ const CustomPizzaPage = () => {
       })
       .catch((error) => {
         console.error('An error occurred while ordering the pizza.', error);
+        alert("Incomplete Customization! Please choose all choices")
         // Show an error message to the user
       });
+
+      setSelectedBase('');
+    setSelectedSauce('');
+    setSelectedCheese('');
+    setSelectedVeggies([]);
   };
 
 
@@ -84,93 +94,135 @@ const CustomPizzaPage = () => {
     setSelectedVeggies([]);
   };
 
+  
+
   return (
     <div style={styles.topcontainer}>
+     <h2 style={styles.heading}>Customize Your Pizza</h2>
     <div style={styles.container}>
-      <h2 style={styles.heading}>Customize Your Pizza</h2>
-
-      <div style={styles.choiceGrid}>
+      <div style={styles.choicesContainer}>
         <div style={styles.choiceContainer}>
           <h3 style={styles.choiceHeading}>Select Pizza Base:</h3>
-          {renderOptions(baseOptions, selectedBase, handleBaseSelection)}
+          {baseOptions.map((option) => (
+            <label key={option} style={styles.optionLabel}>
+              <input
+                type="radio"
+                checked={selectedBase === option}
+                onChange={() => handleBaseSelection(option)}
+                style={styles.optionRadio}
+              />
+              {option}
+            </label>
+          ))}
         </div>
 
         <div style={styles.choiceContainer}>
           <h3 style={styles.choiceHeading}>Select Sauce:</h3>
-          {renderOptions(sauceOptions, selectedSauce, handleSauceSelection)}
+          {sauceOptions.map((option) => (
+            <label key={option} style={styles.optionLabel}>
+              <input
+                type="radio"
+                checked={selectedSauce === option}
+                onChange={() => handleSauceSelection(option)}
+                style={styles.optionRadio}
+              />
+              {option}
+            </label>
+          ))}
         </div>
 
         <div style={styles.choiceContainer}>
           <h3 style={styles.choiceHeading}>Select Cheese:</h3>
-          {renderOptions(cheeseOptions, selectedCheese, handleCheeseSelection)}
+          {cheeseOptions.map((option) => (
+            <label key={option} style={styles.optionLabel}>
+              <input
+                type="radio"
+                checked={selectedCheese === option}
+                onChange={() => handleCheeseSelection(option)}
+                style={styles.optionRadio}
+              />
+              {option}
+            </label>
+          ))}
         </div>
 
         <div style={styles.choiceContainer}>
           <h3 style={styles.choiceHeading}>Select Veggies:</h3>
-          {veggieOptions.map((veggie) => (
-            <label key={veggie} style={styles.optionLabel}>
-              <input
-                type="checkbox"
-                checked={selectedVeggies.includes(veggie)}
-                onChange={() => handleVeggieSelection(veggie)}
-                style={styles.optionCheckbox}
-              />
-              {veggie}
-            </label>
-          ))}
+          <ul style={styles.optionsContainer}>
+            {veggieOptions.map((veggie) => (
+              <li key={veggie} style={styles.optionItem}>
+                <label style={styles.optionLabel}>
+                  <input
+                    type="checkbox"
+                    checked={selectedVeggies.includes(veggie)}
+                    onChange={() => handleVeggieSelection(veggie)}
+                    style={styles.optionCheckbox}
+                  />
+                  {veggie}
+                </label>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-
-      <div style={styles.buttonsContainer}>
-        <button style={styles.button} onClick={handleOrder}>Order</button>
-        <button style={styles.button} onClick={handleCancel}>Cancel</button>
       </div>
 
       <div style={styles.summaryContainer}>
         <h3 style={styles.summaryHeading}>Selected Pizza Configuration:</h3>
-        <p>Base: {selectedBase}</p>
-        <p>Sauce: {selectedSauce}</p>
-        <p>Cheese: {selectedCheese}</p>
-        <p>Veggies: {selectedVeggies.join(', ')}</p>
+        <p style={styles.summaryHeading2}>Base: {selectedBase}</p>
+        <p style={styles.summaryHeading2}>Sauce: {selectedSauce}</p>
+        <p style={styles.summaryHeading2}>Cheese: {selectedCheese}</p>
+        <p style={styles.summaryHeading2}>Veggies: {selectedVeggies.join(', ')}</p>
       </div>
+
     </div>
-    </div>
+        <div style={styles.buttonsContainer}>
+          <button style={styles.button} onClick={handleOrder}>
+            Order
+          </button>
+          <button style={styles.button} onClick={handleCancel}>Cancel</button>
+        </div>
+      </div>
   );
 };
 
 const styles = {
-  topcontainer : {
-    backgroundImage:'url("../../assets/images/entrybg.jpeg")',
-    backgroundSize:"cover"
-  },
-  container: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '20px',
-    fontFamily: 'Arial, sans-serif',
+  topcontainer: {
+    backgroundImage:'url("../../assets/images/slider2.jpg")',
+    backgroundSize:'cover'
   },
   heading: {
     textAlign: 'center',
-    fontSize:"60px",
-    fontWeight:"bolder",
-    color:"red"
+    color: 'red',
+    fontSize:'60px'
   },
-  choiceGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '30px',
+  container: {
+    maxWidth: '850px',
+    margin: '0 auto',
+    padding: '20px',
+    fontFamily: 'Arial, sans-serif',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  choicesContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    width: '70%',
+    color:'white'
   },
   choiceContainer: {
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    backgroundColor: 'rgba(0,0,0,0.8)',
     borderRadius: '8px',
     padding: '20px',
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-    backgroundOpacity:"1"
-
+    marginBottom: '20px',
+    width: '48%',
+    minHeight:'100px'
   },
   choiceHeading: {
     marginBottom: '10px',
-    color: 'white',
     fontSize: '18px',
   },
   optionsContainer: {
@@ -186,42 +238,145 @@ const styles = {
     alignItems: 'center',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
-    color:"white"
+    margin:'10px',
+    padding:'7px'
+  },
+  optionRadio: {
+    marginRight: '5px',
   },
   optionCheckbox: {
     marginRight: '5px',
   },
   buttonsContainer: {
     display: 'flex',
-    justifyContent: 'center',
-    marginTop: '20px',
+    flexDirection: 'row',
+    justifyContent:"center",
+    alignItems: 'center',
+    gap:'600px'
+    // width: '28%',
   },
   button: {
-    backgroundColor: '#FF6F61',
-    color: 'white',
+    backgroundColor: 'red',
+    color: '#fff',
     padding: '10px 20px',
     border: 'none',
     borderRadius: '4px',
     cursor: 'pointer',
-    marginRight: '10px',
+    marginBottom: '10px',
     transition: 'background-color 0.3s ease',
   },
-  // button:hover: {
-  //   backgroundColor: '#DB524D',
-  // },
   summaryContainer: {
+    color:'white',
+    marginTop:'15%',
+    marginLeft:'30px',
     textAlign: 'center',
-    marginTop: '40px',
     padding: '20px',
-    backgroundColor: 'rgba(0,0,0,0.6',
+    // backgroundColor: '#E8E8E8',
+    backgroundImage:"url('../../assets/images/potrait.jpg')",
+    backgroundSize:'cover',
     borderRadius: '8px',
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-    color:"white"
+    width: '48%',
+    height:"fit-content"
   },
   summaryHeading: {
-    color: 'white',
-    marginBottom: '20px',
+    marginBottom: '10px',
+    margin:'10px',
+    color:'white',
+    fontSize: '18px',
+  },
+  summaryHeading2: {
+    margin:'10px',
+    padding:'10px',
+    color:'white',
+    fontSize: '18px',
   },
 };
+
+
+// const styles = {
+//   topcontainer : {
+//     backgroundImage:'url("../../assets/images/entrybg.jpeg")',
+//     backgroundSize:"cover"
+//   },
+//   container: {
+//     maxWidth: '800px',
+//     margin: '0 auto',
+//     padding: '20px',
+//     fontFamily: 'Arial, sans-serif',
+//   },
+//   heading: {
+//     textAlign: 'center',
+//     fontSize:"60px",
+//     fontWeight:"bolder",
+//     color:"red"
+//   },
+//   choiceGrid: {
+//     display: 'grid',
+//     gridTemplateColumns: 'repeat(2, 1fr)',
+//     gap: '30px',
+//   },
+//   choiceContainer: {
+//     backgroundColor: 'rgba(0,0,0,0.6)',
+//     borderRadius: '8px',
+//     padding: '20px',
+//     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+//     backgroundOpacity:"1"
+
+//   },
+//   choiceHeading: {
+//     marginBottom: '10px',
+//     color: 'white',
+//     fontSize: '18px',
+//   },
+//   optionsContainer: {
+//     listStyleType: 'none',
+//     padding: 0,
+//     margin: 0,
+//   },
+//   optionItem: {
+//     marginBottom: '10px',
+//   },
+//   optionLabel: {
+//     display: 'flex',
+//     alignItems: 'center',
+//     cursor: 'pointer',
+//     transition: 'all 0.3s ease',
+//     color:"white"
+//   },
+//   optionCheckbox: {
+//     marginRight: '5px',
+//   },
+//   buttonsContainer: {
+//     display: 'flex',
+//     justifyContent: 'center',
+//     marginTop: '20px',
+//   },
+//   button: {
+//     backgroundColor: '#FF6F61',
+//     color: 'white',
+//     padding: '10px 20px',
+//     border: 'none',
+//     borderRadius: '4px',
+//     cursor: 'pointer',
+//     marginRight: '10px',
+//     transition: 'background-color 0.3s ease',
+//   },
+//   // button:hover: {
+//   //   backgroundColor: '#DB524D',
+//   // },
+//   summaryContainer: {
+//     textAlign: 'center',
+//     marginTop: '40px',
+//     padding: '20px',
+//     backgroundColor: 'rgba(0,0,0,0.6',
+//     borderRadius: '8px',
+//     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+//     color:"white"
+//   },
+//   summaryHeading: {
+//     color: 'white',
+//     marginBottom: '20px',
+//   },
+// };
 
 export default CustomPizzaPage;
