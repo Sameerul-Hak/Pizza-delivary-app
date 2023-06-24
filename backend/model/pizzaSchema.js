@@ -1,16 +1,6 @@
 const mongoose = require('mongoose');
 
-const commentSchema = new mongoose.Schema({
-    user: {
-      type: String,
-      required: true
-    },
-    comment: {
-      type: String,
-      required: true
-    }
-  });
-  
+
 
 const pizzaSchema=new mongoose.Schema({
     name:{
@@ -18,7 +8,7 @@ const pizzaSchema=new mongoose.Schema({
         required:[true,"pizza should have name"],
     },
     image:{
-        type:String
+        type:String,
     },
     description:{
         type:String,
@@ -28,10 +18,9 @@ const pizzaSchema=new mongoose.Schema({
         type:Number,
         min:1,
         max:10,
-        default:1
     },
     tags:{
-        type:String
+        type:String,
     },
     price:{
         type:Number,
@@ -39,7 +28,6 @@ const pizzaSchema=new mongoose.Schema({
     },
     size:{
         type:String,
-        default:"small",
     },
     toppings:{
         type:String,
@@ -47,7 +35,6 @@ const pizzaSchema=new mongoose.Schema({
     },
     discount:{
         type:String,
-        default:"10%",
     },
     typeofpizza:{
         type:String,
@@ -56,21 +43,20 @@ const pizzaSchema=new mongoose.Schema({
     base:{
         type: String,
         enum: ['thin crust', 'thick crust', 'deep dish', 'whole wheat', 'gluten-free'],
-        required: true
+        required: true,
     },
     sauce: {
         type: String,
         enum: ['marinara', 'barbecue', 'alfredo', 'pesto', 'ranch'],
-        required: true
+        required: true,
     },
     status:{
         type:String,
         default:"available"
     },
-    comments: [commentSchema]
+    comments: []
 })
 
 
 const PizzaModel = mongoose.model('pizzas', pizzaSchema);
-const CommentModel=mongoose.model("comments",commentSchema)
-module.exports = PizzaModel,CommentModel;
+module.exports = PizzaModel;

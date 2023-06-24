@@ -92,39 +92,46 @@ const PizzaForm = () => {
         <form onSubmit={handleSubmit} className="create_form">
         <label className="create_label">
           Name:
+          <br/>
           <input type="text" name="name" value={pizzaData.name} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
           Description:
+          <br/>
           <textarea className="desc" name="description" value={pizzaData.description} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
           Quantity:
+          <br/>
           <input type="number" name="quantity" value={pizzaData.quantity} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
           Tags:
+          <br/>
           <input type="text" name="tags" value={pizzaData.tags} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
           Price:
+          <br/>
           <input type="number" name="price" value={pizzaData.price} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
         Size:
+          <br/>
         <input
           type="checkbox"
           name="size"
           value="small"
           checked={pizzaData.size === "small"}
           onChange={handleInputChange}
-        />
+          />
         <span>Small</span>
+          <br/>
 
         <input
           type="checkbox"
@@ -157,17 +164,20 @@ const PizzaForm = () => {
         <br />
         <label className="create_label">
           Toppings:
+          <br />
           <input type="text" name="toppings" value={pizzaData.toppings} onChange={handleInputChange} />
         </label>
         <br />
         <label className="create_label">
           Discount:
+          <br />
           <input type="text" name="discount" value={pizzaData.discount} onChange={handleInputChange} />
         </label>
         <br />
 
         <label className="create_label">
         Type of Pizza:
+        <br />
         <input
           type="checkbox"
           name="type"
@@ -206,6 +216,7 @@ const PizzaForm = () => {
         <br />
         <label className="create_label">
           Crust:
+          <br />
           <select name="base" value={pizzaData.base} onChange={handleInputChange} className="drop-down">
             <option value="thin crust">Thin Crust</option>
             <option value="thick crust">Thick Crust</option>
@@ -217,6 +228,7 @@ const PizzaForm = () => {
         <br />
         <label className="create_label">
           Sauce:
+          <br />
           <select name="sauce" value={pizzaData.sauce} onChange={handleInputChange}className="drop-down">
             <option value="marinara">Marinara</option>
             <option value="barbecue">Barbecue</option>
@@ -228,6 +240,7 @@ const PizzaForm = () => {
         <br />
         <label className="create_label">
           Image:
+          <br />
           <input type="file" onChange={handleFileChange} />
         </label>
         <br />

@@ -3,16 +3,37 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function PizzaDetails() {
+  const [message,setmessage]=useState("")
+
   const [pizza, setPizza] = useState(null);
+  const [comments,setcomments]=useState([])
+  const [postcomments,setpostcomments]=useState(null)
   const { id } = useParams();
   const navigate = useNavigate();
-
+  const user = JSON.parse(localStorage.getItem('user'));
   useEffect(() => {
     axios
       .get(`http://localhost:3001/admin/detailpizzaadmin/${id}`)
       .then((res) => setPizza(res.data))
       .catch((err) => console.log(err));
   }, [id]);
+useEffect(()=>{
+  axios.get(`http://localhost:3001/home/pizza/${id}`)
+  .then((res) => {
+    setcomments(res.data)
+    console.log(res.data)
+  }).catch((err)=>console.log(err))
+},[])
+const handleSendComment = () => {
+  axios
+    .post(`http://localhost:3001/home/pizza/${id}/${user.name}`, {
+      comment: postcomments
+    })
+    .then((res) => {
+      window.location.reload();
+     })
+    .catch((err) => console.log(err));
+};
 
   const imageUrl = pizza ? `http://localhost:3001/images/${pizza.image}` : '';
 
@@ -105,7 +126,43 @@ function PizzaDetails() {
 
   const handlePlaceOrder = () => {
     // Handle placing an order logic here
-    console.log(pizza)
+    let d={
+      username:user.name,
+      name: pizza.name,
+      description: pizza.description,
+      quantity: pizza.quantity,
+      tags: pizza.tags,
+      price: pizza.price,
+      size: pizza.size,
+      toppings: pizza.toppings,
+      discount: pizza.discount,
+      typeofpizza: pizza.typeofpizza,
+      base: pizza.base,
+      sauce: pizza.sauce,
+      image:pizza.image
+    }
+   
+
+    axios
+  .post(`http://localhost:3001/orders/createorder/${user.name}`, d)
+  .then((response) => {
+    if (response.data.message === "error") {
+      setmessage("You have already placed this order");
+      setTimeout(() => {
+        setmessage("");
+        navigate("/menu");
+      }, 3000); 
+    } else {
+      setmessage(response.data.message);
+      setTimeout(() => {
+        setmessage("");
+        navigate("/menu");
+      }, 3000);
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
     
   };
 
@@ -115,6 +172,7 @@ function PizzaDetails() {
 
   return (
     <div style={containerStyle}>
+      {message && <h1>{message}</h1>}
       {pizza ? (
         <div style={detailsContainerStyle}>
           <img src={"http://localhost:3001/images/"+pizza.image} alt={pizza.name} style={imageStyle} />
@@ -160,6 +218,26 @@ function PizzaDetails() {
               Go Back
             </button>
           </div>
+          <div>
+      <input
+        type="text"
+        placeholder="Leave your comment here"
+        name="comment"
+        value={postcomments} // Bind the input value to the state variable
+        onChange={(e) => setpostcomments(e.target.value)}
+      />
+      <input type="button" value="Send" onClick={handleSendComment} /> {/* Add onClick event handler */}
+    </div>
+    <div>
+    {comments.map((comment, index) => (
+          <div key={index}>
+            <p> {comment.username}</p>
+            <p>Comment: {comment.comment}</p>
+            <p>Created At: {comment.createdat}</p>
+            <hr />
+          </div>
+        ))}
+    </div>
         </div>
       ) : (
         <p>Loading pizza details...</p>

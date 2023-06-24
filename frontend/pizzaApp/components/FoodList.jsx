@@ -135,6 +135,7 @@ function FoodList() {
 
   return (
     <div>
+      <div></div>
       <h2>Food List</h2>
       {message && <h1>{message}</h1>}
       <div style={gridContainerStyle}>
