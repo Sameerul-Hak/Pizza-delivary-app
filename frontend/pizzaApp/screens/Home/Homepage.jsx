@@ -22,6 +22,7 @@ function HomePage() {
   const sectionTitleStyle = {
     textTransform: 'uppercase',
     marginBottom: '1rem',
+    
   };
 
   const sectionTextStyle = {
@@ -60,6 +61,7 @@ function HomePage() {
     color: '#fff',
     marginTop: '5rem',
     marginBottom: '3rem',
+    
   };
 
   const textStyle = {

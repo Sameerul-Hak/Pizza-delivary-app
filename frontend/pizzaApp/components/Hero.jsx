@@ -16,7 +16,9 @@ function Hero() {
     textAlign: 'center',
     fontSize: '2rem',
     fontWeight: 'bold',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+    textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+    // fontFamily:"Titan One,cursive",
+    // stroke: '#401c10'
   };
 
   const bannerbottom={
