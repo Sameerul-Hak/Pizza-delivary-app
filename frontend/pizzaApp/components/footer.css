@@ -24,6 +24,7 @@ flex-wrap:wrap;
     display: flex; 
     flex-direction: column; 
     align-items: center;
+    justify-content: center;
     margin: 20px;
     }
     
@@ -31,6 +32,7 @@ flex-wrap:wrap;
     font-size: 1.3rem;
     margin-bottom: 1rem;
     font-weight: bold;
+
     }
 .footerlinks li {
     list-style: none; 
@@ -42,6 +44,7 @@ flex-wrap:wrap;
 .footerlinks li a {
     text-decoration: none;
     color:#fff;
+    /* justify-content: center; */
     }
 .footerlinks li a:hover {
         color:#ff8800;
@@ -68,7 +71,7 @@ flex-wrap:wrap;
         cursor: pointer;
         }
 #footerbutton:hover{
-           color: red;
+           background: red;
             }
         .footeraddress{
         text-align: center; 
