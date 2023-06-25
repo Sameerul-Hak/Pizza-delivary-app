@@ -14,11 +14,11 @@ function Hero() {
       <div className="home_nav_component">
       <NavbarComponent/>
       </div>
-      <h1 id="home_title">Welcome to our Food Website</h1>
+      <h1 id="home_title">Pizza Delight: Where Taste and Quality Meet</h1>
 
       <br/><br/><br/><br/>
       <div className="home_ban_text">
-        Add some more content here - change color and font of nav optionsStyle
+      Crave-Worthy Pizzas, Delivered Hot and Fresh to Your Doorstep!
       </div>
     </div>
     <div className='bannerbottom'>
