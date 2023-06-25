@@ -32,6 +32,7 @@ flex-wrap:wrap;
     font-size: 1.3rem;
     margin-bottom: 1rem;
     font-weight: bold;
+    border-bottom:2px solid rgb(233, 81, 81);
 
     }
 .footerlinks{
