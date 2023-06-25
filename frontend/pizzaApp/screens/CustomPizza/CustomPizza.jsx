@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Navbar from '../../components/Navbar';
+
 
 const CustomPizzaPage = () => {
   const [selectedBase, setSelectedBase] = useState('');
@@ -97,6 +99,9 @@ const CustomPizzaPage = () => {
   
 
   return (
+    <>
+      <Navbar/>
+    
     <div style={styles.topcontainer}>
      <h2 style={styles.heading}>Customize Your Pizza</h2>
     <div style={styles.container}>
@@ -182,6 +187,7 @@ const CustomPizzaPage = () => {
           <button style={styles.button} onClick={handleCancel}>Cancel</button>
         </div>
       </div>
+      </>
   );
 };
 

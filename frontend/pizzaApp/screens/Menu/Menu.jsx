@@ -1,9 +1,14 @@
 import React from 'react';
 import FoodList from '../../components/FoodList';
 import { FiFilter, FiSearch, FiClock, FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import Navbar from '../../components/Navbar';
+
 
 const Menu = () => {
   return (
+    <>
+      <Navbar/>
+   
     <div style={styles.container}>
       <div style={styles.sidebar}>
         <div style={styles.section}>
@@ -45,6 +50,7 @@ const Menu = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

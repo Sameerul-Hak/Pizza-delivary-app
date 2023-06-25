@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Navbar';
 
 function Cartuser() {
   const history = useNavigate();
@@ -69,6 +70,9 @@ function Cartuser() {
   };
 
   return (
+    <>
+      <Navbar/>
+   
     <div style={cartContainerStyle}>
       {message && <h1>{message}</h1>}
       <h1 style={pageTitleStyle}>Your Cart</h1>
@@ -137,6 +141,7 @@ function Cartuser() {
         </div>
       )}
     </div>
+    </>
   );
 }
 // Styles

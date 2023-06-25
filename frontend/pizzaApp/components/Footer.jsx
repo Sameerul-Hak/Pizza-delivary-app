@@ -8,9 +8,11 @@ function Footer() {
       <div className="footerbox">
         <h2 id="links">Links</h2>
        
-          <a className='atag' href="/">Home</a>
-          <a className='atag' href="#aboutus">About Us</a>
-          <a className='atag' href="#contactus">Contact Us</a>
+          <a id='atag' href="/">Home</a>
+          <a id='atag' href="/menu">Menu</a>
+          <a id='atag' href="/custompizza">custompizza</a>
+          <a id='atag' href="/usercart">Cart</a>
+          <a id='atag' href="/">Logout</a>
         
       </div>
         <div className="footerbox">

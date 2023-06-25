@@ -48,13 +48,15 @@ flex-wrap:wrap;
     font-weight: 100;
     
     }
-.atag {
+#atag {
     text-decoration: none;
     color:#fff;
-    padding: 10px;
-    padding: 20px;
-
+    margin:5px;
     } 
+
+#atag:hover{
+    border-bottom:2px solid #ff8800;
+} 
 .footerlinks  a:hover {
         color:#ff8800;
         }
