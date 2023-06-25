@@ -142,8 +142,7 @@ function HomePage() {
       <button type="button" style={buttonStyle} className="btn btn-warning text-uppercase mb-5" onClick={handleOrderNowBtn}><b>Order Now</b></button>
     </div>
 
-    <br></br>inga inoru section add pannanum
-<br></br><br></br><br></br>
+  
     <Footer/>
 
     </div>
