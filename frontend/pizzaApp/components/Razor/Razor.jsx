@@ -22,6 +22,7 @@ const PaymentGateway = () => {
   
     const closePopup = () => {
       setShowPopup(false);
+      history('/home')
     };
   
     const popupStyles = {
