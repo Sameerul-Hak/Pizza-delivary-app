@@ -127,7 +127,7 @@ function HomePage() {
       <div style={sectionTextStyle}>
         <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
       </div>
-      <div className="container">
+      {/* <div className="container"> */}
         <div className="row" style={stepContainerStyle}>
 
         <div style={innerStyle}>
@@ -155,14 +155,14 @@ function HomePage() {
           </div>
 
         </div>
-      </div>
+      {/* </div> */}
     </div>
 
-    <div style={containerStyle2} className="container-fluid text-center py-5 home-cont3">
+    {/* <div style={containerStyle2} className="container-fluid text-center py-5 home-cont3">
       <p style={titleStyle} className="h1 text-uppercase text-white mt-5 mb-3">Just Order And We Will Deliver You</p>
       <p style={textStyle} className="text-white mb-3">Pellentesque eget justo eget nibh luctus semper at ut tellus.</p>
       <button type="button" style={buttonStyle} className="btn btn-warning text-uppercase mb-5" onClick={handleOrderNowBtn}><b>Order Now</b></button>
-    </div>
+    </div> */}
 
   
     <Footer/>
