@@ -8,7 +8,7 @@ function PizzaDetails() {
 
   const [pizza, setPizza] = useState(null);
   const [comments,setcomments]=useState([])
-  const [postcomments,setpostcomments]=useState(null)
+  const [postcomments,setpostcomments]=useState('')
   const { id } = useParams();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
@@ -256,7 +256,7 @@ const handleSendComment = () => {
             style={{
               padding: '10px',
               borderRadius: '5px',
-              borderBottom: '1px solid #ccc',
+              borderBottom : '1px solid #ccc',
               margin: '10px',
               display: 'flex',
               alignItems: 'center',
