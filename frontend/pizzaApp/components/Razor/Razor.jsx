@@ -4,6 +4,7 @@ import pay from "./../../assets/pay.jpeg"
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import axios from 'axios';
 const PaymentGateway = () => {
     const location = useLocation();
@@ -13,12 +14,36 @@ const PaymentGateway = () => {
     const totalAmount = searchParams.get('totalAmount');
     const [message,setmessage]=useState("")
 
-    // console.log(user)
-    const handlebtn=()=>{
-       
-        axios.get(`http://localhost:3001/orders/clearall/${user.name}`).then((res)=>{ alert("transaction successfull");history("/menu")})
-        .catch((err)=>{setmessage("some error occured");console.log(err)})
-    }
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handlebtn = () => {
+      setShowPopup(true);
+    };
+  
+    const closePopup = () => {
+      setShowPopup(false);
+    };
+  
+    const popupStyles = {
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: '#4BB543',
+        color: '#FFF',
+        padding: '40px',
+        borderRadius: '8px',
+        textAlign: 'center',
+        zIndex: 9999,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      };
+    
+      const iconStyles = {
+        fontSize: '48px',
+        marginBottom: '20px',
+      };
     const handsub=(e)=>{
         e.preventDefault()
     }
@@ -89,6 +114,16 @@ const PaymentGateway = () => {
                         </div>
                     </div>
                 </div>
+
+                {showPopup && (
+        <div style={popupStyles}>
+          <AiOutlineCheckCircle style={iconStyles} />
+          <p style={{ fontSize: '24px', marginBottom: '20px' }}>
+            Successful transaction!
+          </p>
+          <button onClick={closePopup}>Close</button>
+        </div>
+      )}
                <button
                 type="submit"
                 className="submit-btn"
