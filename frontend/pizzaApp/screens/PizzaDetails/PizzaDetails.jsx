@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FaComment, FaPaperPlane, FaUser } from 'react-icons/fa';
 
 function PizzaDetails() {
   const [message,setmessage]=useState("")
@@ -219,25 +220,77 @@ const handleSendComment = () => {
             </button>
           </div>
           <div>
-      <input
-        type="text"
-        placeholder="Leave your comment here"
-        name="comment"
-        value={postcomments} // Bind the input value to the state variable
-        onChange={(e) => setpostcomments(e.target.value)}
-      />
-      <input type="button" value="Send" onClick={handleSendComment} /> {/* Add onClick event handler */}
+          <input
+          type="text"
+          placeholder="Leave your comment here"
+          name="comment"
+          value={postcomments}
+          onChange={(e) => setpostcomments(e.target.value)}
+          style={{
+            margin:'40px',
+            padding: '10px',
+            borderRadius: '5px',
+            border: '1px solid #ccc',
+            width: '300px',
+            marginRight: '10px',
+          }}/>
+      <button
+          onClick={handleSendComment}
+          style={{
+            padding: '10px',
+            borderRadius: '5px',
+            background: '#2196f3',
+            color: '#fff',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          <FaPaperPlane style={{ marginRight: '5px' }} />
+          Send
+        </button> {/* Add onClick event handler */}
     </div>
     <div>
-    {comments.map((comment, index) => (
-          <div key={index}>
-            <p> {comment.username}</p>
-            <p>Comment: {comment.comment}</p>
-            <p>Created At: {comment.createdat}</p>
-            <hr />
+        {comments.map((comment, index) => (
+          <div
+            key={index}
+            style={{
+              padding: '10px',
+              borderRadius: '5px',
+              borderBottom: '1px solid #ccc',
+              margin: '10px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <FaUser
+              style={{
+                marginRight: '10px',
+                fontSize: '18px',
+                color: '#2196f3',
+              }}
+            />
+            <div>
+              <p
+                style={{
+                  fontWeight: 'bold',
+                  marginBottom: '5px',
+                }}
+              >
+                {comment.username}
+              </p>
+              <p>{comment.comment}</p>
+              <p
+                style={{
+                  fontSize: '12px',
+                  color: '#777',
+                }}
+              >
+                Created At: {comment.createdat}
+              </p>
+            </div>
           </div>
         ))}
-    </div>
+      </div>
         </div>
       ) : (
         <p>Loading pizza details...</p>
