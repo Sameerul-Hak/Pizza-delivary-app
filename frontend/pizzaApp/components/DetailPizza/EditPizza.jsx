@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './editpizza.css';
 
 function EditPizzaForm() {
   const [pizza, setPizza] = useState({});
@@ -83,93 +84,96 @@ function EditPizzaForm() {
   }
 
   return (
-    <div>
-      {mesg && <h1>{mesg}</h1>}
-      <h2>Edit Pizza</h2>
-      <form onSubmit={handleSubmit}>
-        
-      <label>
-        Name:
-        <input type="text" name="name" value={pizza.name} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Description:
-        <textarea name="description" value={pizza.description} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Quantity:
-        <input type="number" name="quantity" value={pizza.quantity} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Tags:
-        <input type="text" name="tags" value={pizza.tags} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Price:
-        <input type="number" name="price" value={pizza.price} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Size:
-        <select name="size" value={pizza.size} onChange={handleChange}>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Toppings:
-        <input type="text" name="toppings" value={pizza.toppings} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Discount:
-        <input type="text" name="discount" value={pizza.discount} onChange={handleChange} />
-      </label>
-      <br />
-      <label>
-        Type of Pizza:
-        <select name="typeofpizza" value={pizza.typeofpizza} onChange={handleChange}>
-          <option value="veg">Veg</option>
-          <option value="non-veg">Non-Veg</option>
-          <option value="cheese">Cheese</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Base:
-        <select name="base" value={pizza.base} onChange={handleChange}>
-          <option value="thin crust">Thin Crust</option>
-          <option value="thick crust">Thick Crust</option>
-          <option value="deep dish">Deep Dish</option>
-          <option value="whole wheat">Whole Wheat</option>
-          <option value="gluten-free">Gluten-Free</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Sauce:
-        <select name="sauce" value={pizza.sauce} onChange={handleChange}>
-          <option value="marinara">Marinara</option>
-          <option value="barbecue">Barbecue</option>
-          <option value="alfredo">Alfredo</option>
-          <option value="pesto">Pesto</option>
-          <option value="ranch">Ranch</option>
-        </select>
-      </label>
-      <br />
-      <label>
-        Image:
-        <input type="file" onChange={handleFileChange} />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+    <div className='edit-pizza-bg'>
+      <div className="edit-form-box">
+          {mesg && <h1>{mesg}</h1>}
+          <h2>Edit Pizza</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="edit-form-field">
+              <label>
+                Name:
+                <input type="text" name="name" value={pizza.name} onChange={handleChange} />
+              </label>
+              <br />
+              <label>
+                Description:
+                <textarea name="description" value={pizza.description} onChange={handleChange} />
+              </label>
+              <br />
+              <label>
+                Quantity:
+                <input type="number" name="quantity" value={pizza.quantity} onChange={handleChange} />
+              </label>
+              <br />
+              <label>
+                Tags:
+                <input type="text" name="tags" value={pizza.tags} onChange={handleChange} />
+              </label>
+              <br />
+              <label>
+                Price:
+                <input type="number" name="price" value={pizza.price} onChange={handleChange} />
+              </label>
+              <br />
+              <label>
+                Size:
+                <select name="size" value={pizza.size} onChange={handleChange}>
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                </select>
+              </label>
+              <br />
+              <label>
+                Toppings:
+                <input type="text" name="toppings" value={pizza.toppings} onChange={handleChange} />
+              </label>
+              <br />
+              <label>
+                Discount:
+                <input type="text" name="discount" value={pizza.discount} onChange={handleChange} />
+              </label>
+              <br />
+              <label>
+                Type of Pizza:
+                <select name="typeofpizza" value={pizza.typeofpizza} onChange={handleChange}>
+                  <option value="veg">Veg</option>
+                  <option value="non-veg">Non-Veg</option>
+                  <option value="cheese">Cheese</option>
+                </select>
+              </label>
+              <br />
+              <label>
+                Base:
+                <select name="base" value={pizza.base} onChange={handleChange}>
+                  <option value="thin crust">Thin Crust</option>
+                  <option value="thick crust">Thick Crust</option>
+                  <option value="deep dish">Deep Dish</option>
+                  <option value="whole wheat">Whole Wheat</option>
+                  <option value="gluten-free">Gluten-Free</option>
+                </select>
+              </label>
+              <br />
+              <label>
+                Sauce:
+                <select name="sauce" value={pizza.sauce} onChange={handleChange}>
+                  <option value="marinara">Marinara</option>
+                  <option value="barbecue">Barbecue</option>
+                  <option value="alfredo">Alfredo</option>
+                  <option value="pesto">Pesto</option>
+                  <option value="ranch">Ranch</option>
+                </select>
+              </label>
+              <br />
+              <label>
+                Image:
+                <input type="file" onChange={handleFileChange} />
+              </label>
+            </div>
+            <br />
+            <button type="submit" className='edit-form-btn'>Submit</button>
+          </form>
+        </div>
     </div>
   );
 }

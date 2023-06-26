@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Navbar';
 
 function Cartuser() {
   const history = useNavigate();
@@ -27,6 +28,9 @@ function Cartuser() {
     setTotalAmount(amount);
   };
 
+  const handleMenuClick = () => {
+    history("/menu");
+  }
   const handleRemove = (ord) => {
     axios
       .post(`http://localhost:3001/orders/clearorder/${ord._id}/${user.name}`)
@@ -66,6 +70,9 @@ function Cartuser() {
   };
 
   return (
+    <>
+      <Navbar/>
+   
     <div style={cartContainerStyle}>
       {message && <h1>{message}</h1>}
       <h1 style={pageTitleStyle}>Your Cart</h1>
@@ -115,10 +122,14 @@ function Cartuser() {
           </div>
         ))
       ) : (
-        <div style={emptyCartStyle}>
-          <h1>Hi, {user.name}!</h1>
-          <h1>Your cart is empty. Go to the menu and place an order.</h1>
-        </div>
+        <div style={styles.container}>
+      <div style={styles.iconContainer}>
+        <i className="fa fa-shopping-cart" style={styles.icon}></i>
+      </div>
+      <h2 style={styles.title}>Your Cart is Empty</h2>
+      <p style={styles.description}>Start adding items to your cart to see them here.</p>
+      <button onClick={handleMenuClick} style={menuButtonstyle}>Menu</button>
+    </div>
       )}
       
       {myorders.length !== 0 && (
@@ -130,9 +141,47 @@ function Cartuser() {
         </div>
       )}
     </div>
+    </>
   );
 }
 // Styles
+
+const menuButtonstyle = {
+  backgroundColor: 'orange',
+  padding: '5px',
+  border: 'none',
+  borderRadius: '4px',
+  cursor: 'pointer',
+  fontSize: '20px',
+  margin:'20px'
+}
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh",
+  },
+  iconContainer: {
+    marginBottom: "20px",
+  },
+  icon: {
+    fontSize: "64px",
+    color: "#ccc",
+  },
+  title: {
+    fontSize: "24px",
+    fontWeight: "bold",
+    marginBottom: "10px",
+  },
+  description: {
+    fontSize: "16px",
+    color: "#888",
+  },
+};
+
+
 const cartContainerStyle = {
   maxWidth: '900px',
   margin: '0 auto',
@@ -142,6 +191,8 @@ const cartContainerStyle = {
 const pageTitleStyle = {
   fontSize: '24px',
   marginBottom: '20px',
+  display:'flex',
+  justifyContent:'center'
 };
 
 const cartItemStyle = {

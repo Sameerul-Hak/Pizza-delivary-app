@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { FiArrowRight, FiShoppingCart } from 'react-icons/fi';
 
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -26,7 +27,7 @@ function FoodList() {
 
   const gridContainerStyle = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
     gridGap: '20px',
     marginTop: '20px',
   };
@@ -75,6 +76,12 @@ function FoodList() {
     margin: '5px',
     cursor: 'pointer',
     transition: 'background-color 0.3s',
+    display: 'flex',
+    alignItems: 'center',
+  };
+
+  const buttonIconStyle = {
+    marginRight: '5px',
   };
 
   const { id } = useParams();
@@ -134,27 +141,34 @@ function FoodList() {
   };
 
   return (
-    <div>
-      <div></div>
-      <h2>Food List</h2>
+<div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h2>Food List</h2>
+        <Link to="/usercart" style={{ textDecoration: 'none', color: '#000' }}>
+          <button style={buttonStyle}>
+            <FiShoppingCart size={20} style={buttonIconStyle} />
+            View Cart
+          </button>
+        </Link>
+      </div>
       {message && <h1>{message}</h1>}
       <div style={gridContainerStyle}>
         {foods.map((food) => (
-          <div
-            key={food._id}
-            style={foodItemStyle}
-            onClick={() => handleFoodItemClick(food)}
-          >
-            <img
-              src={`http://localhost:3001/images/` + food.image}
-              alt={food.name}
-              style={foodItemImageStyle}
-            />
+          <div key={food._id} style={foodItemStyle} onClick={() => handleFoodItemClick(food)}>
+            <img src={`http://localhost:3001/images/` + food.image} alt={food.name} style={foodItemImageStyle} />
             <h3 style={foodItemNameStyle}>{food.name}</h3>
             <p style={foodItemDescriptionStyle}>{food.description}</p>
             <p style={foodItemPriceStyle}>Price: ${food.price}</p>
-            <button style={buttonStyle} onClick={() => handleViewMoreClick(food)}>View More</button>
-            <button style={buttonStyle} onClick={() => handlePlaceOrderClick(food)}>Place Order</button>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <button style={buttonStyle} onClick={() => handleViewMoreClick(food)}>
+                <FiArrowRight size={16} style={buttonIconStyle} />
+                View More
+              </button>
+              <button style={buttonStyle} onClick={() => handlePlaceOrderClick(food)}>
+                <FiShoppingCart size={16} style={buttonIconStyle} />
+                Place Order
+              </button>
+            </div>
           </div>
         ))}
       </div>
