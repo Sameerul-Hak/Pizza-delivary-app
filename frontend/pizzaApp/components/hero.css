@@ -89,12 +89,13 @@
 
 
 
-.otrd{
+#otrd{
   letter-spacing:-1px;
   font-weight:  bold;
-  font-size: larger;
-  color:#f0efef;
-   
+  font-size: 40px;
+  color:#f03535;
+   position: relative;
+   top: 3rem;
     
 }
 

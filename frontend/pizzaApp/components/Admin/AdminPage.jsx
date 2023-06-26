@@ -25,6 +25,7 @@ console.log(isadminauth)
             <Link className='spl' to="/admin">Admin</Link>
           <Link className='nav-t' to="/adminorders">my orders</Link>
           <Link className='nav-t' to="/createpizzaadmin">create pizza</Link>
+          <Link className='nav-t' to="/admincus">Customized Pizza</Link>
           </nav>
           <div className='admin-contianer'>
            {userdetails.map(pizza => (
