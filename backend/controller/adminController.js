@@ -2,6 +2,7 @@ const userModel=require("./../model/userModel")
 const multer=require('multer')
 const bcrypt=require('bcryptjs')
 const PizzaModel=require("./../model/pizzaSchema")
+const CustomizedPizza=require("../model/custompizza")
 exports.CreateAdminAccount=async(req,res,next)=>{
     let extistinguser;
     try{
@@ -78,3 +79,22 @@ exports.deletepizza=(req, res) => {
     const pizzaId = req.params.id;
     PizzaModel.findByIdAndDelete(pizzaId).then((result)=>res.json({message:"deleted successfully"})).catch((err)=>console.log(err))
 }
+
+exports.customizedpizza=(req,res)=>{
+  CustomizedPizza.find().then((result)=>res.json({message:result})).catch((err)=>console.log(err))
+}
+exports.cusdelete = (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  CustomizedPizza.deleteOne({ _id: id })
+    .then((result) => {
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ message: "pizza not found" });
+      }
+      res.json({ message: "pizza cleared successfully" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "Something went wrong" });
+    });
+};

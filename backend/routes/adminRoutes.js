@@ -1,5 +1,5 @@
 const express=require("express")
-const { CreateAdminAccount, AdminLogin, createpizza, allpizzas, detailpizzadmin, deletepizza, editpizza } = require("../controller/adminController")
+const { CreateAdminAccount, AdminLogin, createpizza, allpizzas, detailpizzadmin, deletepizza, editpizza, customizedpizza, cusdelete } = require("../controller/adminController")
 const router=express.Router()
 const multer=require('multer')
 const PizzaModel=require("./../model/pizzaSchema")
@@ -63,4 +63,7 @@ router.put('/editpizzaadmin/:id',upload.single('file'),(req, res) => {
   }).then((result)=>res.json({message:" pizza updated successfully"})).catch((err)=>console.log(err))
   
   })
+
+router.get("/customizedpizzaadmin",customizedpizza)
+router.post("/clearpizzacus/:id",cusdelete)
 module.exports=router
