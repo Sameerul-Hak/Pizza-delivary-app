@@ -9,8 +9,8 @@ const CustomPizzaPage = () => {
   const [selectedCheese, setSelectedCheese] = useState('');
   const [selectedVeggies, setSelectedVeggies] = useState([]);
 
-  const user = JSON.parse(localStorage.getItem('user'));
-  const User = user._id;
+  const User = JSON.parse(localStorage.getItem('user'));
+  // const User = user._id;
 
   const baseOptions = ['Thin Crust', 'Thick Crust', 'Whole Wheat', 'Gluten-Free', 'Cauliflower Crust'];
   const sauceOptions = ['Marinara', 'Alfredo', 'Pesto', 'BBQ', 'Garlic Butter'];
@@ -19,6 +19,7 @@ const CustomPizzaPage = () => {
 
   const handleBaseSelection = (base) => {
     setSelectedBase(base);
+    console.log(User.id)
   };
 
   const handleSauceSelection = (sauce) => {
@@ -64,7 +65,7 @@ const CustomPizzaPage = () => {
       sauce: selectedSauce,
       cheese: selectedCheese,
       veggies: selectedVeggies,
-      user:User
+      user:User.id,
     };
     console.log('Pizza ordered!',customizedPizza);
     axios

@@ -30,13 +30,14 @@ router.get('/detailpizzauser/:id', async (req, res) => {
 
 router.post('/custompizza', async (req, res) => {
   try {
-    const { base, sauce, cheese, veggies } = req.body;
+    const { base, sauce, cheese, veggies,user } = req.body;
 
     const customizedPizza = new CustomizedPizza({
       base,
       sauce,
       cheese,
       veggies,
+      user,
     });
 
     const savedPizza = await customizedPizza.save();

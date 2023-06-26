@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./userModel')
 
 const customizedPizzaSchema = new mongoose.Schema({
   base: {
@@ -18,8 +19,8 @@ const customizedPizzaSchema = new mongoose.Schema({
     required: true,
   },
   user : {
-    type: mongoose.Types.ObjectId, 
-    ref:'User'
+    type: mongoose.Types.ObjectId,
+    ref: './userModel',
   }
 });
 

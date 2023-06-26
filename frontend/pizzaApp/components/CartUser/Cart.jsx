@@ -107,7 +107,8 @@ function Cartuser() {
                 </button>
               </div>
               
-              <h2 style={{margin:"10px"}}>{ord.status}</h2>
+              <p style={{margin: "10px", textTransform: 'capitalize', color: (ord.status === 'available' ? 'green' : ord.status === 'delivered' ? 'blue' : 'red')}}>{ord.status}</p>
+
               <div>
               {ord.status=="delivered" || ord.status=="cancelled" ?<div>
               <button onClick={() => handleRemove(ord)} style={removeButtonStyle}>
@@ -203,7 +204,7 @@ const cartItemStyle = {
 };
 
 const cartItemImageStyle = {
-  width: '100px',
+  width: '200px',
   height: '200px',
   marginRight: '20px',
 };
