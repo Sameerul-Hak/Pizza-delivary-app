@@ -45,18 +45,23 @@ exports.AdminLogin = async (req, res) => {
             message: "User not found, please sign up",
           });
         }
-      
-        const isPasswordCorrect = bcrypt.compareSync(password, extistinguser.password);
-        if (!isPasswordCorrect) {
-          return res.json({
-            message: "Invalid email or password",
+        if(extistinguser.isadmin==="true"){
+
+            const isPasswordCorrect = bcrypt.compareSync(password, extistinguser.password);
+          if (!isPasswordCorrect) {
+            return res.json({
+              message: "Invalid email or password",
+            });
+          }
+        
+          return res.status(200).json({
+            message: "Login success",
+            user: extistinguser,
           });
         }
-      
-        return res.status(200).json({
-          message: "Login success",
-          user: extistinguser,
-        });
+        else{
+          res.json({message:"You are not a admin lol go away."})
+        }
       };
   
 exports.allpizzas=(req,res)=>{
