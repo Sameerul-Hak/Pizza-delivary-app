@@ -169,9 +169,8 @@ function EditPizzaForm() {
                 Image:
                 <input type="file" onChange={handleFileChange} />
               </label>
-            </div>
-            <br />
             <button type="submit" className='edit-form-btn'>Submit</button>
+            </div>
           </form>
         </div>
     </div>

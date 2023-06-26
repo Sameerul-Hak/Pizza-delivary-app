@@ -66,7 +66,7 @@ function Orders() {
       </nav>
       {message && <h1>{message}</h1>}
       <div className="admin-contianer">
-        {orders.map((ord) => (
+        {orders.length !=0 ?orders.map((ord) => (
           <div key={ord._id} className="pizza-block">
             <img
               className="img-tag"
@@ -116,7 +116,7 @@ function Orders() {
                 Remove
               </button>
           </div>
-        ))}
+        )) :<h1 style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"90vh",color:"red",fontSize:"60px"}}>You have recieved no orders yet :(</h1>}
       </div>
     </div>
   );

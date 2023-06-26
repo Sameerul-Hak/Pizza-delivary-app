@@ -112,4 +112,8 @@ exports.changests = (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
       });
   };
-  
+  exports.allclear=(req,res)=>{
+    const {username}=req.params
+    console.log(username,"asfda")
+    orderModel.deleteMany({username:username}).then((resl)=>{res.json({message:"cleared"})}).catch((Err)=>console.log(Err))
+  }

@@ -9,9 +9,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 function FoodList() {
   const history=useNavigate()
   const user = JSON.parse(localStorage.getItem('user'));
+  const [message,setmessage]=useState("")
+
   console.log(user.name)
   const [foods, setFoods] = useState([]);
-  const [message,setmessage]=useState("")
   useEffect(() => {
     fetchData();
   }, []);
@@ -150,8 +151,10 @@ function FoodList() {
             View Cart
           </button>
         </Link>
+      </div >
+      <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+        {message && <h1 style={{backgroundColor:"#90EE90",width:"fit-content",padding:"7px",borderRadius:"10px",textTransform:"capitalize",position:"sticky",top:"30%"}} >{message} ✅</h1>}
       </div>
-      {message && <h1>{message}</h1>}
       <div style={gridContainerStyle}>
         {foods.map((food) => (
           <div key={food._id} style={foodItemStyle} onClick={() => handleFoodItemClick(food)}>

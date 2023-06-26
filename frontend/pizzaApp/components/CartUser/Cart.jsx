@@ -65,8 +65,9 @@ function Cartuser() {
   };
 
   const handleProceedToPay = () => {
-    // Your logic for proceeding to the payment page goes here
+    history(`/paymentgate?totalAmount=${totalAmount}`);
     console.log('Proceed to Pay');
+    
   };
 
   return (

@@ -17,6 +17,8 @@ import PrivateRoutes from './PrivateRoute';
 import Orders from '../components/Admin/orders/Orders';
 import { UserProvider } from '../components/UserContext';
 import Cartuser from "../components/CartUser/Cart"
+import Cuspizza from '../components/Admin/Customized/Cuspizza';
+import PaymentGateway from '../components/Razor/Razor';
 const App = () => {
 
   return (
@@ -35,12 +37,13 @@ const App = () => {
           <Route path="/home" element={<HomePage />} />
           {/* <Route path="/detailP/:id" element={<DetailP />} /> */}
           <Route path="/custompizza" element={<CustomPizzaPage />} />
-          <Route path="/placeorder" element={<PlaceOrder />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/adminlogin" element={<AdminLogin />} />
           <Route path="/singlepizza/:id" element={<PizzaDetails />} />
           <Route path="/adminorders" element={<Orders />} />
           <Route path="/usercart" element={<Cartuser/>} />
+          <Route path="/admincus" element={<Cuspizza/>} />
+          <Route path="/paymentgate" element={<PaymentGateway/>}/>
         </Routes>
         </UserProvider>
       </AdminAuthProvider>
