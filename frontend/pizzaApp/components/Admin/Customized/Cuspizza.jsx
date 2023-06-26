@@ -155,7 +155,7 @@ function Cuspizza() {
                 <FiArrowRight size={16} style={buttonIconStyle} />
                 View More
               </button> */}
-              <h2>user{food.user}</h2>
+              <h2>Ordered By:{food.user.name}</h2>
           <button onClick={() => handleRemove(food)} className='btn-order' >
           Remove
         </button>

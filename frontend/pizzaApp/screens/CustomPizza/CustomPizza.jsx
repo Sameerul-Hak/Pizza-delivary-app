@@ -65,7 +65,7 @@ const CustomPizzaPage = () => {
       sauce: selectedSauce,
       cheese: selectedCheese,
       veggies: selectedVeggies,
-      user:User.id,
+      user:User,
     };
     console.log('Pizza ordered!',customizedPizza);
     axios

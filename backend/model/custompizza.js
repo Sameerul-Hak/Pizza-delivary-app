@@ -19,7 +19,7 @@ const customizedPizzaSchema = new mongoose.Schema({
     required: true,
   },
   user : {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.Mixed,
     ref: './userModel',
   }
 });
