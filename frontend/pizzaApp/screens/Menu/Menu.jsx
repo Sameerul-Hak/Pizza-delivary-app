@@ -1,55 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FoodList from '../../components/FoodList';
 import { FiFilter, FiSearch, FiClock, FiArrowUp, FiArrowDown } from 'react-icons/fi';
 import Navbar from '../../components/Navbar';
 
-
 const Menu = () => {
+  const [sortOrder, setSortOrder] = useState('ascending');
+  const [filterActive, setFilterActive] = useState(false);
+
+  const handleRecent = () => {
+    // Perform recent operation
+    console.log('Display recent items');
+  };
+
+  const handleSortAscending = () => {
+    // Sort in ascending order
+    setSortOrder('ascending');
+    console.log('Sort in ascending order');
+  };
+
+  const handleSortDescending = () => {
+    // Sort in descending order
+    setSortOrder('descending');
+    console.log('Sort in descending order');
+  };
+
+  const handleFilter = () => {
+    // Toggle filter active state
+    setFilterActive(!filterActive);
+    console.log('Toggle filter:', !filterActive);
+  };
+
   return (
     <>
-      <Navbar/>
-   
-    <div style={styles.container}>
-      <div style={styles.sidebar}>
-        <div style={styles.section}>
-          <h3 style={styles.title}>Filter</h3>
-          <button style={styles.button}>
-            <FiFilter style={styles.icon} />
-            Filter
-          </button>
+      <Navbar />
+      
+      <div style={styles.container}>
+        
+        <div style={styles.leftSidebar}>
+          <div style={styles.section}>
+            <h3 style={styles.title}>Filter</h3>
+            <button style={styles.button} onClick={handleFilter}>
+              <FiFilter style={styles.icon} />
+              {filterActive ? 'Remove Filter' : 'Apply Filter'}
+            </button>
+          </div>
+          <div style={styles.section}>
+            <h3 style={styles.title}>Sort</h3>
+            <button
+              style={styles.button}
+              onClick={handleSortAscending}
+              disabled={sortOrder === 'ascending'}
+            >
+              <FiArrowUp style={styles.icon} />
+              Sort Ascending
+            </button>
+            <button
+              style={styles.button}
+              onClick={handleSortDescending}
+              disabled={sortOrder === 'descending'}
+            >
+              <FiArrowDown style={styles.icon} />
+              Sort Descending
+            </button>
+          </div>
         </div>
-        <div style={styles.section}>
-          <h3 style={styles.title}>Sort</h3>
-          <button style={styles.button}>
-            <FiArrowUp style={styles.icon} />
-            Sort Ascending
-          </button>
-          <button style={styles.button}>
-            <FiArrowDown style={styles.icon} />
-            Sort Descending
-          </button>
-        </div>
-      </div>
-      <div style={styles.content}>
+        <div style={styles.content}>
         <FoodList />
-      </div>
-      <div style={styles.sidebar}>
-        <div style={styles.section}>
-          <h3 style={styles.title}>Search</h3>
-          <button style={styles.button}>
-            <FiSearch style={styles.icon} />
-            Search
-          </button>
-        </div>
-        <div style={styles.section}>
-          <h3 style={styles.title}>Recent</h3>
-          <button style={styles.button}>
-            <FiClock style={styles.icon} />
-            Recent
-          </button>
         </div>
       </div>
-    </div>
     </>
   );
 };
@@ -57,17 +75,16 @@ const Menu = () => {
 const styles = {
   container: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    // height: '100vh',
+    // flexDirection: 'column',
+    // alignItems: 'center',
   },
-  sidebar: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginRight: '40px',
-    marginLeft: '40px',
-  },
+
+  // leftSidebar: {
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   alignItems: 'center',
+  //   marginBottom: '20px',
+  // },
   section: {
     marginBottom: '20px',
     padding: '20px',
@@ -78,7 +95,9 @@ const styles = {
     alignItems: 'center',
   },
   content: {
-    flex: 1,
+    flex:'2',
+    margin:'40px',
+    padding:'10px',
   },
   title: {
     fontSize: '18px',

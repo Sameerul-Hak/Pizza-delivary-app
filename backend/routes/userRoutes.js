@@ -10,6 +10,30 @@ const router = express.Router();
 const Pizza = require('../model/pizzaSchema');
 
 // Single Pizza Route
+
+router.get('/orders', async (req, res) => {
+  try {
+    const searchText = req.query.search;
+    const regex = new RegExp(searchText, 'i');
+    const searchQuery = {
+      $or: [
+        { username: regex },
+        { name: regex },
+        { description: regex },
+        { tags: regex },
+        { toppings: regex },
+      ],
+    };
+
+    const searchResults = await OrdersModel.find(searchQuery);
+    res.json(searchResults);
+  } catch (error) {
+    console.error('Error searching orders:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 router.get('/detailpizzauser/:id', async (req, res) => {
     const { id } = req.params;
 

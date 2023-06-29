@@ -26,6 +26,29 @@ function FoodList() {
     }
   };
 
+
+  const [searchText, setSearchText] = useState('');
+  const [filteredFoods, setFilteredFoods] = useState([]);
+
+  useEffect(() => {
+    if (searchText.trim() !== '') {
+      const filteredResults = foods.filter((food) =>
+        food.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setFilteredFoods(filteredResults);
+    } else {
+      setFilteredFoods(foods);
+    }
+  }, [searchText, foods]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchText(e.target.value);
+  };
+
+
+
+
   const gridContainerStyle = {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
@@ -143,20 +166,28 @@ function FoodList() {
 
   return (
 <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2>Food List</h2>
-        <Link to="/usercart" style={{ textDecoration: 'none', color: '#000' }}>
-          <button style={buttonStyle}>
-            <FiShoppingCart size={20} style={buttonIconStyle} />
-            View Cart
-          </button>
-        </Link>
-      </div >
-      <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-        {message && <h1 style={{backgroundColor:"#90EE90",width:"fit-content",padding:"7px",borderRadius:"10px",textTransform:"capitalize",position:"sticky",top:"30%"}} >{message} ✅</h1>}
+<div style={{ marginBottom: '20px' }}>
+        <input
+          type="text"
+          placeholder="Search food..."
+          value={searchText}
+          onChange={handleSearch}
+          style={{
+            padding: '10px',
+            borderRadius: '5px',
+            border: '1px solid #ccc',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            fontSize: '16px',
+            width: '300px',
+            outline: 'none',
+          }}
+        />
       </div>
+
+      
       <div style={gridContainerStyle}>
-        {foods.map((food) => (
+      {filteredFoods.length > 0 ? (
+        filteredFoods.map((food) => (
           <div key={food._id} style={foodItemStyle} onClick={() => handleFoodItemClick(food)}>
             <img src={`http://localhost:3001/images/` + food.image} alt={food.name} style={foodItemImageStyle} />
             <h3 style={foodItemNameStyle}>{food.name}</h3>
@@ -172,8 +203,9 @@ function FoodList() {
                 Place Order
               </button>
             </div>
-          </div>
-        ))}
+          </div>)))
+        :(   <p style={{ textAlign: 'center', fontSize: '18px' }}>Nothing found</p>
+      )}
       </div>
     </div>
   );
