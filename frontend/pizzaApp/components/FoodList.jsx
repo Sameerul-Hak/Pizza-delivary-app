@@ -70,7 +70,7 @@ const [sortOrder, setSortOrder] = useState('ascending');
   useEffect(() => {
     if (searchText.trim() !== '') {
       const filteredResults = foods.filter((food) =>
-        food.name.toLowerCase().includes(searchText.toLowerCase())
+        food.name.toLowerCase().includes(searchText.toLowerCase()) || food.description.toLowerCase().includes(searchText.toLowerCase())
       );
       setFilteredFoods(filteredResults);
     } else {
