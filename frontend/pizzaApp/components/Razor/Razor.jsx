@@ -10,6 +10,7 @@ const PaymentGateway = () => {
     const location = useLocation();
     const history=useNavigate(); 
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user)
     const searchParams = new URLSearchParams(location.search);
     const totalAmount = searchParams.get('totalAmount');
     const [message,setmessage]=useState("")

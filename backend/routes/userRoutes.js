@@ -2,7 +2,15 @@
 const userController=require("./../controller/usersController")
 const { detailpizzauser} = require("../controller/adminController")
 const CustomizedPizza = require('../model/custompizza');
-
+const nodemailer = require("nodemailer");
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+     
+  auth: {
+    user: 'useremail9944@gmail.com',
+    pass: 'zaahcuyndcoysujz'
+  }
+});
 const express = require('express');
 const router = express.Router();
 
@@ -65,6 +73,20 @@ router.post('/custompizza', async (req, res) => {
     });
 
     const savedPizza = await customizedPizza.save();
+    var mailOptions = {
+      from: 'useremail9944@gmail.com',
+      to: "testme2206@gmail.com",
+      subject: `Hey admin, you have recieved one order :)`,
+      text: `Hey admin you have got one order from customized pizza`
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    }); 
 
     res.status(201).json(savedPizza);
   } catch (error) {

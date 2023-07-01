@@ -138,7 +138,9 @@ function Cuspizza() {
         {message && <h1 style={{ backgroundColor: "#90EE90", width: "fit-content", padding: "7px", borderRadius: "10px", textTransform: "capitalize", position: "sticky", top: "30%" }}>{message} ✅</h1>}
       </div>
       <div style={gridContainerStyle}>
-        {foods.map((food) => (
+        {
+        foods.length !=0 ?
+        foods.map((food) => (
           <div key={food._id} style={foodItemStyle} onClick={() => handleFoodItemClick(food)}>
             <img src={getRandomImage()} alt={food.name} style={foodItemImageStyle} />
             <h3 style={foodItemNameStyle}>{food.name}</h3>
@@ -161,7 +163,10 @@ function Cuspizza() {
         </button>
             </div>
           </div>
-        ))}
+        ))
+        :
+        <h1 style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"90vh",color:"red",fontSize:"60px"}}>You have recieved no orders yet :(</h1>
+        }
         
       </div>
     </div>

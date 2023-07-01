@@ -15,6 +15,7 @@ router.post("/register", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
+      address:req.body.address,
       phoneNumber: req.body.phoneNumber,
     });
     console.log(newUser);
@@ -60,6 +61,7 @@ router.post('/login', async (req, res) => {
         name: user.name,
         email: user.email,
         phoneNumber: user.phoneNumber,
+        address:user.address,
       },})
 });
 

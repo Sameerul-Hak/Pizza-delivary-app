@@ -21,7 +21,7 @@ function Footer() {
             <input type="email" name='email' id='email' placeholder='Enter your email ID'/>
             <button id='footerbutton' type='submit'>Subscibe Now</button>
           </form>
-          <div><h3 id="copyrights">@copyrights Sameer_the_God</h3></div>
+          <div><h3 id="copyrights">@copyrights Pizza_Delight</h3></div>
         </div>
         <div className="footerbox">
           <h2>Contact</h2>

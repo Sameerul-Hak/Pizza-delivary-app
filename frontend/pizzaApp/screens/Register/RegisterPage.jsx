@@ -7,6 +7,7 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setaddress] = useState('');
 
   const navigate = useNavigate();
 
@@ -17,7 +18,7 @@ const RegisterPage = () => {
         name,
         email,
         password,
-        phoneNumber
+        phoneNumber,address,
       })
       
       res.data && window.location.replace("/")
@@ -172,6 +173,31 @@ const RegisterPage = () => {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               placeholder="Your phoneNumber number"
+            />
+            <label
+              htmlFor="address"
+              style={{
+                marginBottom: '5px',
+                marginLeft: '20px',
+                display: 'flex',
+              }}
+            >
+              Address
+            </label>
+            <input
+              style={{
+                width: '300px',
+                padding: '10px',
+                marginLeft: '20px',
+                marginBottom: '15px',
+                fontSize: '16px',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+              }}
+              type="text"
+              value={address}
+              onChange={(e) => setaddress(e.target.value)}
+              placeholder="Your address"
             />
             <button
               type="submit"

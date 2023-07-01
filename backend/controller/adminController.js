@@ -19,6 +19,7 @@ exports.CreateAdminAccount=async(req,res,next)=>{
             email:req.body.email, 
             password:hasedpassword,
             phoneNumber:req.body.phoneNumber,
+            
             isadmin:req.body.isadmin
         })
         try{
@@ -61,7 +62,7 @@ exports.AdminLogin = async (req, res) => {
           });
         }
         else{
-          res.json({message:"You are not a admin lol go away."})
+          res.json({message:"You are not allowed here ❌"})
         }
       };
   

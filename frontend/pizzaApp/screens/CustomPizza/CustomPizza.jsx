@@ -8,6 +8,7 @@ const CustomPizzaPage = () => {
   const [selectedSauce, setSelectedSauce] = useState('');
   const [selectedCheese, setSelectedCheese] = useState('');
   const [selectedVeggies, setSelectedVeggies] = useState([]);
+  const [message,setmessage]=useState("")
 
   const User = JSON.parse(localStorage.getItem('user'));
   // const User = user._id;
@@ -72,11 +73,20 @@ const CustomPizzaPage = () => {
       .post('http://localhost:3001/user/custompizza', customizedPizza)
       .then((response) => {
         console.log('Pizza ordered!', response.data);
+        setmessage("Pizza ordered and email sent to admin ✅")
+        setTimeout(() => {
+          setmessage("");
+          navigate("/menu");
+        }, 3000); 
         // Reset the form or show a success message
       })
       .catch((error) => {
         console.error('An error occurred while ordering the pizza.', error);
-        alert("Incomplete Customization! Please choose all choices")
+        setmessage("Error occured ❌")
+        setTimeout(() => {
+          setmessage("");
+          // navigate("/menu");
+        }, 3000); 
         // Show an error message to the user
       });
 
@@ -102,9 +112,9 @@ const CustomPizzaPage = () => {
   return (
     <>
       <Navbar/>
-    
     <div style={styles.topcontainer}>
      <h2 style={styles.heading}>Customize Your Pizza</h2>
+      {message && <h1 style={styles.mess}>{message}</h1>}
     <div style={styles.container}>
       <div style={styles.choicesContainer}>
         <div style={styles.choiceContainer}>
@@ -219,6 +229,15 @@ const styles = {
     width: '70%',
     color:'white'
   },
+  mess:{
+    backgroundColor:"#10b3ff",
+    width:"fit-content",
+    margin:"auto",
+    borderRadius:"5px",
+    padding:"10px",
+    marginTop:"10px",
+    opacity:"0.7"
+ },
   choiceContainer: {
     backgroundColor: 'rgba(0,0,0,0.8)',
     borderRadius: '8px',

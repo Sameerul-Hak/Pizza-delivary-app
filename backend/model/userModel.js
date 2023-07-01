@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Phone number is required'],
   },
+  address:{
+    type:String,
+    default:"chennai,kundrathur,chennai institute of technology "
+  },
   isadmin:{
     type:String,
     default:"false"

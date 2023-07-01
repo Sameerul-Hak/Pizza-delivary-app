@@ -75,7 +75,7 @@ function Cartuser() {
       <Navbar/>
    
     <div style={cartContainerStyle}>
-      {message && <h1>{message}</h1>}
+      {message && <h1 >{message}</h1>}
       <h1 style={pageTitleStyle}>Your Cart</h1>
 
       {myorders.length !== 0 ? (

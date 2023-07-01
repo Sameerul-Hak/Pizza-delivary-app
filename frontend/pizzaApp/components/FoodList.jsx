@@ -10,8 +10,6 @@ function FoodList() {
   const history=useNavigate()
   const user = JSON.parse(localStorage.getItem('user'));
   const [message,setmessage]=useState("")
-
-  console.log(user.name)
   const [foods, setFoods] = useState([]);
   useEffect(() => {
     fetchData();
@@ -182,13 +180,13 @@ const [sortOrder, setSortOrder] = useState('ascending');
   .post(`http://localhost:3001/orders/createorder/${user.name}`, d)
   .then((response) => {
     if (response.data.message === "error") {
-      setmessage("You have already placed this order");
+      setmessage(`You have already placed this order ❌`);
       setTimeout(() => {
         setmessage("");
         navigate("/menu");
       }, 3000); 
     } else {
-      setmessage(response.data.message);
+      setmessage(`${response.data.message} ✅`);
       setTimeout(() => {
         setmessage("");
         navigate("/menu");
@@ -206,35 +204,9 @@ const [sortOrder, setSortOrder] = useState('ascending');
 
 
 <div style={styles.container}>
-        
-        <div style={styles.leftSidebar}>
-          <div style={styles.section}>
-            <h3 style={styles.title}>Filter</h3>
-            <button style={styles.button} onClick={handleFilter}>
-              <FiFilter style={styles.icon} />
-              {filterActive ? 'Remove Filter' : 'Apply Filter'}
-            </button>
-          </div>
-          <div style={styles.section}>
-            <h3 style={styles.title}>Sort</h3>
-            <button
-              style={styles.button}
-              onClick={handleSortAscending}
-              disabled={sortOrder === 'ascending'}
-            >
-              <FiArrowUp style={styles.icon} />
-              Sort Ascending
-            </button>
-            <button
-              style={styles.button}
-              onClick={handleSortDescending}
-              disabled={sortOrder === 'descending'}
-            >
-              <FiArrowDown style={styles.icon} />
-              Sort Descending
-            </button>
-          </div>
-        </div>
+
+{message && <h1 style={styles.mess}>{message}</h1>}
+       
 
     <div style={styles.content}>
 
@@ -287,7 +259,8 @@ const [sortOrder, setSortOrder] = useState('ascending');
 const styles = {
   container: {
     display: 'flex',
-    // flexDirection: 'column',
+    flexDirection: 'column',
+    justifyContent:"center",
     // alignItems: 'center',
   },
 
@@ -305,6 +278,15 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+  },
+  mess:{
+     backgroundColor:"#10b3ff",
+     width:"fit-content",
+     margin:"auto",
+     borderRadius:"5px",
+     padding:"10px",
+     marginTop:"10px",
+     opacity:"0.7"
   },
   content: {
     flex:'2',

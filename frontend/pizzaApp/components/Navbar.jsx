@@ -24,28 +24,31 @@ const Navbar = () => {
       </label>
       <ul className="menu-item">
           <li>
-            <a href="/menu">
+            <Link to="/menu">
               Menu
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/usercart">
+            <Link to="/usercart">
               Cart
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/custompizza">
+            <Link to="/custompizza">
               CreatePizza
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/home">
-              Account
-            </a>
+            <Link to="/userprofile">Account</Link>
           </li>
           <li>
             <Link to="/">
               Logout
+            </Link>
+          </li>
+          <li>
+            <Link to="/admin">
+              Admin
             </Link>
           </li>
         </ul>

@@ -97,10 +97,10 @@ const AdminLogin = () => {
         <div className="btn-group">
           <button className="btn btn--primary login-form-admin" onClick={handleLogin}>Login</button>
         </div>
-        <h2>for testing purpose</h2>
+        {/* <h2>for testing purpose</h2>
         <h3>email:admin@gmail.com
             password:admin1234
-        </h3>
+        </h3> */}
       </div>
       </div>
     </div>
