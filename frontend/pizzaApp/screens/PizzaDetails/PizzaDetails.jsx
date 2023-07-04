@@ -181,7 +181,7 @@ const handleSendComment = () => {
           <p style={descriptionStyle}>{pizza.description}</p>
           <div style={infoItemStyle}>
             <span style={labelStyle}>Price:</span>
-            <span style={valueStyle}>${pizza.price}</span>
+            <span style={valueStyle}>{pizza.price} INR</span>
           </div>
           <div style={infoItemStyle}>
             <span style={labelStyle}>Quantity:</span>

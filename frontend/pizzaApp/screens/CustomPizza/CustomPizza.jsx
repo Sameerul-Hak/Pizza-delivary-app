@@ -209,7 +209,8 @@ const styles = {
   },
   heading: {
     textAlign: 'center',
-    color: 'red',
+    color: 'white ',
+
     fontSize:'60px'
   },
   container: {

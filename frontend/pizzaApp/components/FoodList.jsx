@@ -236,7 +236,7 @@ const [sortOrder, setSortOrder] = useState('ascending');
             <img src={`http://localhost:3001/images/` + food.image} alt={food.name} style={foodItemImageStyle} />
             <h3 style={foodItemNameStyle}>{food.name}</h3>
             <p style={foodItemDescriptionStyle}>{food.description}</p>
-            <p style={foodItemPriceStyle}>Price: ${food.price}</p>
+            <p style={foodItemPriceStyle}>Price: {food.price} INR</p>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <button style={buttonStyle} onClick={() => handleViewMoreClick(food)}>
                 <FiArrowRight size={16} style={buttonIconStyle} />
