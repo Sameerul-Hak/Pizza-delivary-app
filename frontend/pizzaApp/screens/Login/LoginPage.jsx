@@ -58,7 +58,7 @@ const LoginPage = () => {
     justifyContent: 'center',
     alignItems: 'center',
     margin: '0',
-    background: 'url(./../../assets/images/entry2.jpg)',
+    background: 'url(./../../assets/images/entrybg.jpeg)',
     backgroundSize: 'cover',
     overflowX: 'hidden',
   };

@@ -23,7 +23,7 @@ app.use("/admin",adminRoutes)
 app.use("/home",homeRoutes)
 app.use("/orders",orderRoutes)
 //to run server check u r in backend folder ->pizzaApp\backend> then type "npm start"
-const MONGO_URL = "mongodb+srv://asamarun2003:pizza1234@cluster0.iz4axej.mongodb.net/?retryWrites=true&w=majority"
+const MONGO_URL = "mongodb://127.0.0.1:27017"
 const PORT = 5000;
 mongoose.connect(MONGO_URL,{
     useNewUrlParser: true,
